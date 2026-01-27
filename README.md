@@ -9,4 +9,4 @@ The application works under Windows and Linux and it was created in .NET 10.
 Tested in:
 
 - Windows 11
-- Ubuntu 25.10
+- Ubuntu 24.04 LTS
