@@ -25,10 +25,7 @@
 			<PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
 		</PackageReference>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<ProjectReference Include="..\ClockAvalonia\ClockAvalonia.csproj" />
+		<PackageReference Include="DustInTheWind.ClockAvalonia" Version="1.0.0" />
 	</ItemGroup>
 
 </Project>

@@ -3,10 +3,10 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
-using DustInTheWind.ClockAvalonia.ClearClock.ViewModels;
-using DustInTheWind.ClockAvalonia.ClearClock.Views;
+using DustInTheWind.OroAvalonia.ViewModels;
+using DustInTheWind.OroAvalonia.Views;
 
-namespace DustInTheWind.ClockAvalonia.ClearClock;
+namespace DustInTheWind.OroAvalonia;
 
 public partial class App : Application
 {

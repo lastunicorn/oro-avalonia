@@ -1,4 +1,4 @@
-namespace DustInTheWind.ClockAvalonia.ClearClock.CustomControls;
+namespace DustInTheWind.OroAvalonia.CustomControls;
 
 public enum CornerType
 {

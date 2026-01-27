@@ -1,14 +1,14 @@
 <Window
-	x:Class="DustInTheWind.ClockAvalonia.ClearClock.Views.MainWindow"
+	x:Class="DustInTheWind.OroAvalonia.Views.MainWindow"
 
 	xmlns="https://github.com/avaloniaui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:vm="using:DustInTheWind.ClockAvalonia.ClearClock.ViewModels"
+	xmlns:vm="using:DustInTheWind.OroAvalonia.ViewModels"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:controls="using:DustInTheWind.ClockAvalonia"
-	xmlns:customControls="using:DustInTheWind.ClockAvalonia.ClearClock.CustomControls"
-	xmlns:converters="using:DustInTheWind.ClockAvalonia.ClearClock"
+	xmlns:customControls="using:DustInTheWind.OroAvalonia.CustomControls"
+	xmlns:converters="using:DustInTheWind.OroAvalonia"
 
 	mc:Ignorable="d"
 	d:DesignWidth="800"

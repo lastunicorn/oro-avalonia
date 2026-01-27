@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace DustInTheWind.ClockAvalonia.ClearClock.ViewModels;
+namespace DustInTheWind.OroAvalonia.ViewModels;
 
 public class ViewModelBase : ObservableObject
 {

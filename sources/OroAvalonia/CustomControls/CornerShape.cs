@@ -1,7 +1,7 @@
 using Avalonia;
 using Avalonia.Media;
 
-namespace DustInTheWind.ClockAvalonia.ClearClock.CustomControls;
+namespace DustInTheWind.OroAvalonia.CustomControls;
 
 internal class CornerShape
 {

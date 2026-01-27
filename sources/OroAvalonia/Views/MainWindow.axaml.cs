@@ -1,14 +1,12 @@
 using System;
 using Avalonia.Controls;
-using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Interactivity;
-using Avalonia.Media;
-using DustInTheWind.ClockAvalonia.Shapes;
+using DustInTheWind.ClockAvalonia;
 using DustInTheWind.ClockAvalonia.Templates;
 using DustInTheWind.ClockAvalonia.TimeProviders;
 
-namespace DustInTheWind.ClockAvalonia.ClearClock.Views;
+namespace DustInTheWind.OroAvalonia.Views;
 
 public partial class MainWindow : Window
 {

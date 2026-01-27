@@ -1,6 +1,6 @@
 # Oro Avalonia
 
-Ana Avalonia application that displays an analog clock.
+An Avalonia application that displays an analog clock.
 
 It supports multiple templates.
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using Avalonia;
 
-namespace DustInTheWind.ClockAvalonia.ClearClock;
+namespace DustInTheWind.OroAvalonia;
 
 internal sealed class Program
 {

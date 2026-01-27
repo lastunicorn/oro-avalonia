@@ -1,4 +1,4 @@
-﻿namespace DustInTheWind.ClockAvalonia.ClearClock.ViewModels;
+﻿namespace DustInTheWind.OroAvalonia.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {

@@ -1,9 +1,9 @@
 using System;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using DustInTheWind.ClockAvalonia.ClearClock.ViewModels;
+using DustInTheWind.OroAvalonia.ViewModels;
 
-namespace DustInTheWind.ClockAvalonia.ClearClock;
+namespace DustInTheWind.OroAvalonia;
 
 public class ViewLocator : IDataTemplate
 {

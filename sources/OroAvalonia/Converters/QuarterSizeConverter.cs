@@ -2,7 +2,7 @@ using System;
 using System.Globalization;
 using Avalonia.Data.Converters;
 
-namespace DustInTheWind.ClockAvalonia.ClearClock;
+namespace DustInTheWind.OroAvalonia;
 
 public class QuarterSizeConverter : IValueConverter
 {

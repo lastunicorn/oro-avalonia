@@ -1,7 +1,7 @@
 using System;
 using Avalonia;
 
-namespace DustInTheWind.ClockAvalonia.ClearClock.CustomControls;
+namespace DustInTheWind.OroAvalonia.CustomControls;
 
 internal record struct CircleTouch
 {
