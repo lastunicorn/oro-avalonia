@@ -1,0 +1,79 @@
+<Window
+	x:Class="DustInTheWind.ClockAvalonia.ClearClock.Views.MainWindow"
+
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:vm="using:DustInTheWind.ClockAvalonia.ClearClock.ViewModels"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:controls="using:DustInTheWind.ClockAvalonia"
+	xmlns:customControls="using:DustInTheWind.ClockAvalonia.ClearClock.CustomControls"
+	xmlns:converters="using:DustInTheWind.ClockAvalonia.ClearClock"
+
+	mc:Ignorable="d"
+	d:DesignWidth="800"
+	d:DesignHeight="450"
+	x:DataType="vm:MainWindowViewModel"
+	Icon="/Assets/app.ico"
+	ExtendClientAreaChromeHints="NoChrome"
+    TransparencyLevelHint="Transparent"
+    TransparencyBackgroundFallback="Transparent"
+    Background="Transparent"
+    ExtendClientAreaToDecorationsHint="True"
+	SizeToContent="WidthAndHeight"
+    WindowStartupLocation="CenterScreen"
+    SystemDecorations="None"
+	ExtendClientAreaTitleBarHeightHint="-1">
+
+	<Design.DataContext>
+		<!-- This only sets the DataContext for the previewer in an IDE,
+		to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+
+	<Grid
+        x:Name="MainContainer"
+        Width="400"
+        Height="400">
+
+		<customControls:CornerButton
+			x:Name="CloseButton"
+			Width="{Binding #MainContainer.Bounds.Width, Converter={x:Static converters:QuarterSizeConverter.Instance}}"
+			Height="{Binding #MainContainer.Bounds.Height, Converter={x:Static converters:QuarterSizeConverter.Instance}}"
+			HorizontalAlignment="Right"
+			VerticalAlignment="Top"
+			Cursor="Hand"
+			Click="CloseButton_Click"
+			Corner="TopRight"
+			CornerRadius="0.05"
+			HoverBackground="Red">
+
+			<!-- X Icon -->
+			<Path
+				Data="M 0,0 L 1,1 M 1,0 L 0,1"
+				Stroke="White"
+				StrokeThickness="3"
+				StrokeLineCap="Round"
+				Stretch="Uniform"
+				Width="18"/>
+
+		</customControls:CornerButton>
+
+		<Thumb
+			x:Name="ResizeGrip"
+			Width="{Binding #MainContainer.Bounds.Width, Converter={x:Static converters:QuarterSizeConverter.Instance}}"
+			Height="{Binding #MainContainer.Bounds.Height, Converter={x:Static converters:QuarterSizeConverter.Instance}}"
+			Classes="ResizeGrip"
+			DragDelta="ResizeGrip_DragDelta" />
+
+		<Viewbox
+			HorizontalAlignment="Stretch"
+			VerticalAlignment="Stretch">
+
+			<controls:AnalogClock
+				x:Name="AnalogClock"/>
+
+		</Viewbox>
+	</Grid>
+
+</Window>

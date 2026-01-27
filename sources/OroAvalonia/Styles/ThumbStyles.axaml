@@ -1,0 +1,55 @@
+<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style Selector="Thumb.ResizeGrip">
+        <Setter Property="Cursor" Value="BottomRightCorner" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="Padding" Value="10" />
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Viewbox
+                    Name="PART_Container"
+                    Opacity="0.5">
+
+                    <Grid
+                        Width="100"
+                        Height="100">
+
+                        <!-- Background -->
+                        <Path
+                            Name="PART_BackgroundPath"
+                            Data="M 0,1 A 2,2 0 0 0 1,0 L 1,1 Z"
+                            Fill="#909090"
+                            Stroke="#909090"
+                            StrokeThickness="0"
+                            StrokeJoin="Round"
+                            Stretch="Fill"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"/>
+
+                        <!-- Three Lines -->
+                        <!--<Path
+                            Data="M 0,20 L 20,0 M 8,20 L 20,8 M 16,20 L 20,16"
+                            Stroke="WhiteSmoke"
+                            StrokeThickness="2"
+                            StrokeLineCap="Round"
+                            Stretch="Uniform"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Margin="{TemplateBinding Padding}"
+                            IsHitTestVisible="False"/>-->
+
+                    </Grid>
+                </Viewbox>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector="Thumb.ResizeGrip:pointerover /template/ Viewbox#PART_Container">
+        <Setter Property="Opacity" Value="1"/>
+    </Style>
+
+</Styles>

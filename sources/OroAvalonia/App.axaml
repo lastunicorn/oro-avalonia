@@ -1,0 +1,22 @@
+<Application
+    x:Class="DustInTheWind.ClockAvalonia.ClearClock.App"
+
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DustInTheWind.ClockAvalonia.ClearClock"
+    
+    RequestedThemeVariant="Default">
+    <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+  
+    <Application.Styles>
+        <FluentTheme />
+        <StyleInclude Source="avares://DustInTheWind.ClockAvalonia/Themes/AnalogClock.axaml"/>
+        <StyleInclude Source="avares://DustInTheWind.ClockAvalonia.ClearClock/Styles/CornerButtonStyles.axaml"/>
+        <StyleInclude Source="avares://DustInTheWind.ClockAvalonia.ClearClock/Styles/ThumbStyles.axaml"/>
+    </Application.Styles>
+
+</Application>

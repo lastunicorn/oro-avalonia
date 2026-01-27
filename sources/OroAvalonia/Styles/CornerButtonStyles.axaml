@@ -1,0 +1,55 @@
+<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:DustInTheWind.ClockAvalonia.ClearClock.CustomControls">
+
+    <Style Selector="controls|CornerButton">
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="Background" Value="#909090" />
+        <Setter Property="HoverBackground" Value="#909090" />
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Viewbox
+                    Name="PART_Container"
+                    Opacity="0.5">
+
+                    <Grid
+                        Width="100"
+                        Height="100">
+
+                        <Path
+                            Name="PART_BackgroundPath"
+                            Data="{TemplateBinding Geometry}"
+                            Fill="{TemplateBinding Background}"
+                            Stroke="{TemplateBinding Background}"
+                            StrokeThickness="0"
+                            StrokeJoin="Round"
+                            Stretch="Fill"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            RenderTransform="{TemplateBinding GeometryTransform}"/>
+
+                        <ContentPresenter
+                            Name="PART_ContentPresenter"
+                            Content="{TemplateBinding Content}"
+                            HorizontalAlignment="{TemplateBinding ContentHorizontalAlignment}"
+                            VerticalAlignment="{TemplateBinding ContentVerticalAlignment}"
+                            Margin="{TemplateBinding Padding}"/>
+
+                    </Grid>
+                </Viewbox>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector="controls|CornerButton:pointerover /template/ Viewbox#PART_Container">
+        <Setter Property="Opacity" Value="1"/>
+    </Style>
+
+    <Style Selector="controls|CornerButton:pointerover /template/ Path#PART_BackgroundPath">
+        <Setter Property="Fill" Value="{TemplateBinding HoverBackground}"/>
+        <Setter Property="Stroke" Value="{TemplateBinding HoverBackground}"/>
+    </Style>
+
+</Styles>
