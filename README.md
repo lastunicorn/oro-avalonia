@@ -1,5 +1,12 @@
-# Clock Avalonia
+# Oro Avalonia
 
-An Avalonia user control that displays an analog clock.
+Ana Avalonia application that displays an analog clock.
 
-Supports templates.
+It supports multiple templates.
+
+The application works under Windows and Linux and it was created in .NET 10.
+
+Tested in:
+
+- Windows 11
+- Ubuntu 25.10
