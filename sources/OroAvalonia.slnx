@@ -1,3 +1,6 @@
 <Solution>
+  <Folder Name="/Ports/">
+    <Project Path="OroAvalonia.Ports.SettingsAccess/OroAvalonia.Ports.SettingsAccess.csproj" Id="e19c897a-009b-4c70-a0b8-9fe0c77c9833" />
+  </Folder>
   <Project Path="OroAvalonia/OroAvalonia.csproj" Id="549887b9-7d84-4699-87d8-c84514d13a7d" />
 </Solution>

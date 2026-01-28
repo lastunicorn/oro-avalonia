@@ -1,5 +1,10 @@
 ﻿using System;
 using Avalonia;
+using CommunityToolkit.Mvvm.DependencyInjection;
+using DustInTheWind.OroAvalonia.Ports.SettingsAccess;
+using DustInTheWind.OroAvalonia.ViewModels;
+using DustInTheWind.OroAvalonia.Views;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DustInTheWind.OroAvalonia;
 
@@ -11,8 +16,21 @@ internal sealed class Program
     [STAThread]
     public static void Main(string[] args)
     {
+        IServiceProvider serviceProvider = ConfigureServices();
+
         BuildAvaloniaApp()
             .StartWithClassicDesktopLifetime(args);
+    }
+
+    private static IServiceProvider ConfigureServices()
+    {
+        ServiceCollection serviceCollection = new();
+        Setup.ConfigureServices(serviceCollection);
+        ServiceProvider serviceProvider = serviceCollection.BuildServiceProvider();
+        
+        Ioc.Default.ConfigureServices(serviceProvider);
+
+        return serviceProvider;
     }
 
     // Avalonia configuration, don't remove; also used by visual designer.
@@ -22,5 +40,16 @@ internal sealed class Program
             .UsePlatformDetect()
             .WithInterFont()
             .LogToTrace();
+    }
+}
+
+internal static class Setup
+{
+    public static void ConfigureServices(IServiceCollection serviceCollection)
+    {
+        serviceCollection.AddSingleton<ISettings, Settings>();
+
+        serviceCollection.AddTransient<MainWindow>();
+        serviceCollection.AddTransient<MainViewModel>();
     }
 }

@@ -13,28 +13,29 @@
 	mc:Ignorable="d"
 	d:DesignWidth="800"
 	d:DesignHeight="450"
-	x:DataType="vm:MainWindowViewModel"
+	x:DataType="vm:MainViewModel"
 	Icon="/Assets/app.ico"
 	ExtendClientAreaChromeHints="NoChrome"
-    TransparencyLevelHint="Transparent"
-    TransparencyBackgroundFallback="Transparent"
-    Background="Transparent"
-    ExtendClientAreaToDecorationsHint="True"
+	TransparencyLevelHint="Transparent"
+	TransparencyBackgroundFallback="Transparent"
+	Background="Transparent"
+	ExtendClientAreaToDecorationsHint="True"
 	SizeToContent="WidthAndHeight"
-    WindowStartupLocation="CenterScreen"
-    SystemDecorations="None"
-	ExtendClientAreaTitleBarHeightHint="-1">
+	WindowStartupLocation="CenterScreen"
+	SystemDecorations="None"
+	ExtendClientAreaTitleBarHeightHint="-1"
+	Topmost="{Binding KeepOnTop}">
 
 	<Design.DataContext>
 		<!-- This only sets the DataContext for the previewer in an IDE,
 		to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-		<vm:MainWindowViewModel/>
+		<vm:MainViewModel/>
 	</Design.DataContext>
 
 	<Grid
-        x:Name="MainContainer"
-        Width="400"
-        Height="400">
+		x:Name="MainContainer"
+		Width="400"
+		Height="400">
 
 		<customControls:CornerButton
 			x:Name="CloseButton"
