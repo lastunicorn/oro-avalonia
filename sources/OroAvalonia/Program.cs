@@ -1,9 +1,6 @@
 ﻿using System;
 using Avalonia;
 using CommunityToolkit.Mvvm.DependencyInjection;
-using DustInTheWind.OroAvalonia.Ports.SettingsAccess;
-using DustInTheWind.OroAvalonia.ViewModels;
-using DustInTheWind.OroAvalonia.Views;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DustInTheWind.OroAvalonia;
@@ -40,16 +37,5 @@ internal sealed class Program
             .UsePlatformDetect()
             .WithInterFont()
             .LogToTrace();
-    }
-}
-
-internal static class Setup
-{
-    public static void ConfigureServices(IServiceCollection serviceCollection)
-    {
-        serviceCollection.AddSingleton<ISettings, Settings>();
-
-        serviceCollection.AddTransient<MainWindow>();
-        serviceCollection.AddTransient<MainViewModel>();
     }
 }

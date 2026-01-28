@@ -47,7 +47,8 @@
 			Click="CloseButton_Click"
 			Corner="TopRight"
 			CornerRadius="0.05"
-			HoverBackground="Red">
+			HoverBackground="Red"
+			IsVisible="{Binding IsNavigationVisible}">
 
 			<!-- X Icon -->
 			<Path
@@ -65,14 +66,16 @@
 			Width="{Binding #MainContainer.Bounds.Width, Converter={x:Static converters:QuarterSizeConverter.Instance}}"
 			Height="{Binding #MainContainer.Bounds.Height, Converter={x:Static converters:QuarterSizeConverter.Instance}}"
 			Classes="ResizeGrip"
-			DragDelta="ResizeGrip_DragDelta" />
+			DragDelta="ResizeGrip_DragDelta"
+			IsVisible="{Binding IsNavigationVisible}" />
 
 		<Viewbox
 			HorizontalAlignment="Stretch"
 			VerticalAlignment="Stretch">
 
 			<controls:AnalogClock
-				x:Name="AnalogClock"/>
+				x:Name="AnalogClock"
+				ClockTemplate="{Binding ClockTemplate}" />
 
 		</Viewbox>
 	</Grid>
