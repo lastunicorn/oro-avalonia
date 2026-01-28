@@ -61,7 +61,7 @@
 
 		</customControls:CornerButton>
 
-		<Thumb
+		<customControls:CornerThumb
 			x:Name="ResizeGrip"
 			Width="{Binding #MainContainer.Bounds.Width, Converter={x:Static converters:QuarterSizeConverter.Instance}}"
 			Height="{Binding #MainContainer.Bounds.Height, Converter={x:Static converters:QuarterSizeConverter.Instance}}"

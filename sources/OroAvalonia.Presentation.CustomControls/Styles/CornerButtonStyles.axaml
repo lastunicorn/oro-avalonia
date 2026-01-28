@@ -22,7 +22,6 @@
                             Name="PART_BackgroundPath"
                             Data="{TemplateBinding Geometry}"
                             Fill="{TemplateBinding Background}"
-                            Stroke="{TemplateBinding Background}"
                             StrokeThickness="0"
                             StrokeJoin="Round"
                             Stretch="Fill"

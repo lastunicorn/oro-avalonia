@@ -1,12 +1,14 @@
 <Styles
     xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:DustInTheWind.OroAvalonia.Presentation.CustomControls">
 
-    <Style Selector="Thumb.ResizeGrip">
+    <Style Selector="controls|CornerThumb.ResizeGrip">
         <Setter Property="Cursor" Value="BottomRightCorner" />
         <Setter Property="HorizontalAlignment" Value="Right" />
         <Setter Property="VerticalAlignment" Value="Bottom" />
         <Setter Property="Padding" Value="10" />
+        <Setter Property="Background" Value="#909090" />
 
         <Setter Property="Template">
             <ControlTemplate>
@@ -21,26 +23,29 @@
                         <!-- Background -->
                         <Path
                             Name="PART_BackgroundPath"
-                            Data="M 0,1 A 2,2 0 0 0 1,0 L 1,1 Z"
-                            Fill="#909090"
-                            Stroke="#909090"
+                            Data="{TemplateBinding Geometry}"
+                            Fill="{TemplateBinding Background}"
                             StrokeThickness="0"
                             StrokeJoin="Round"
                             Stretch="Fill"
                             HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"/>
+                            VerticalAlignment="Stretch">
+
+                            <Path.RenderTransform>
+                                <RotateTransform Angle="180" CenterX="0.5" CenterY="0.5"/>
+                            </Path.RenderTransform>
+                        </Path>
 
                         <!-- Three Lines -->
-                        <!--<Path
+                        <Path
                             Data="M 0,20 L 20,0 M 8,20 L 20,8 M 16,20 L 20,16"
                             Stroke="WhiteSmoke"
                             StrokeThickness="2"
                             StrokeLineCap="Round"
-                            Stretch="Uniform"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Bottom"
                             Margin="{TemplateBinding Padding}"
-                            IsHitTestVisible="False"/>-->
+                            IsHitTestVisible="False"/>
 
                     </Grid>
                 </Viewbox>

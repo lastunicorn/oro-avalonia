@@ -1,4 +1,3 @@
-using System;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -11,8 +10,9 @@ public class CornerButton : Button
 {
     #region Corner Styled Property
 
-    public static readonly StyledProperty<CornerType> CornerProperty =
-        AvaloniaProperty.Register<CornerButton, CornerType>(nameof(Corner), CornerType.TopLeft);
+    public static readonly StyledProperty<CornerType> CornerProperty = AvaloniaProperty.Register<CornerButton, CornerType>(
+        nameof(Corner),
+        CornerType.TopLeft);
 
     public CornerType Corner
     {
@@ -131,7 +131,7 @@ public class CornerButton : Button
 
     private void UpdateVisualElements()
     {
-        Geometry = new CornerShape()
+        Geometry = new TopLeftCornerShape()
         {
             CornerRadius = CornerRadius
         };

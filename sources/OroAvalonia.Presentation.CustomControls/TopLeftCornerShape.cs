@@ -3,7 +3,7 @@ using Avalonia.Media;
 
 namespace DustInTheWind.OroAvalonia.Presentation.CustomControls;
 
-internal class CornerShape
+internal class TopLeftCornerShape
 {
     public double CornerRadius { get; set; }
 
@@ -101,7 +101,7 @@ internal class CornerShape
         };
     }
 
-    public static implicit operator Geometry(CornerShape cornerShape)
+    public static implicit operator Geometry(TopLeftCornerShape cornerShape)
     {
         return cornerShape.ToGeometry();
     }
