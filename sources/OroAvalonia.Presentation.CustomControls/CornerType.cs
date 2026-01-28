@@ -1,4 +1,4 @@
-namespace DustInTheWind.OroAvalonia.CustomControls;
+namespace DustInTheWind.OroAvalonia.Presentation.CustomControls;
 
 public enum CornerType
 {

@@ -5,7 +5,7 @@ using Avalonia.Interactivity;
 using Avalonia.Layout;
 using Avalonia.Media;
 
-namespace DustInTheWind.OroAvalonia.CustomControls;
+namespace DustInTheWind.OroAvalonia.Presentation.CustomControls;
 
 public class CornerButton : Button
 {

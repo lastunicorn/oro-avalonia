@@ -1,7 +1,6 @@
-using System;
 using Avalonia;
 
-namespace DustInTheWind.OroAvalonia.CustomControls;
+namespace DustInTheWind.OroAvalonia.Presentation.CustomControls;
 
 internal record struct CircleTouch
 {

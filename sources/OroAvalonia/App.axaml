@@ -15,7 +15,7 @@
     <Application.Styles>
         <FluentTheme />
         <StyleInclude Source="avares://DustInTheWind.ClockAvalonia/Themes/AnalogClock.axaml"/>
-        <StyleInclude Source="avares://DustInTheWind.OroAvalonia/Styles/CornerButtonStyles.axaml"/>
+        <StyleInclude Source="avares://DustInTheWind.OroAvalonia.Presentation.CustomControls/Styles/CornerButtonStyles.axaml"/>
         <StyleInclude Source="avares://DustInTheWind.OroAvalonia/Styles/ThumbStyles.axaml"/>
     </Application.Styles>
 

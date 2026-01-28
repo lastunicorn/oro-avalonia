@@ -1,19 +1,15 @@
 using System;
 using Avalonia.Controls;
-using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using DustInTheWind.ClockAvalonia;
 using DustInTheWind.ClockAvalonia.TimeProviders;
-using DustInTheWind.OroAvalonia.CustomControls;
 using DustInTheWind.OroAvalonia.ViewModels;
 
 namespace DustInTheWind.OroAvalonia.Views;
 
 public partial class MainWindow : Window
 {
-    private bool isNavigationVisible;
-
     public MainWindow()
     {
         InitializeComponent();
@@ -49,14 +45,6 @@ public partial class MainWindow : Window
     {
         if (DataContext is MainViewModel viewModel)
             viewModel.ToggleNavigationCommand.Execute(null);
-
-        //isNavigationVisible = !isNavigationVisible;
-
-        //CornerButton closeButton = this.FindControl<CornerButton>("CloseButton");
-        //closeButton.IsVisible = isNavigationVisible;
-
-        //Thumb resizeGrip = this.FindControl<Thumb>("ResizeGrip");
-        //resizeGrip.IsVisible = isNavigationVisible;
     }
 
     private void CloseButton_Click(object sender, RoutedEventArgs e)

@@ -1,7 +1,7 @@
 <Styles
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="using:DustInTheWind.OroAvalonia.CustomControls">
+    xmlns:controls="using:DustInTheWind.OroAvalonia.Presentation.CustomControls">
 
     <Style Selector="controls|CornerButton">
         <Setter Property="Padding" Value="10" />
