@@ -75,7 +75,8 @@
 
 			<controls:AnalogClock
 				x:Name="AnalogClock"
-				ClockTemplate="{Binding ClockTemplate}" />
+				ClockTemplate="{Binding ClockTemplate}"
+				TimeProvider="{Binding TimeProvider}"/>
 
 		</Viewbox>
 	</Grid>

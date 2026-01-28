@@ -22,11 +22,6 @@ public partial class MainWindow : Window
 
         if (clock != null)
         {
-            LocalTimeProvider timeProvider = new();
-            timeProvider.Start();
-
-            clock.TimeProvider = timeProvider;
-
             clock.PointerPressed += HandleClockPointerPressed;
         }
     }
