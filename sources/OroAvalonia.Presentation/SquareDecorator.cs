@@ -18,10 +18,10 @@ public class SquareDecorator : Decorator
         Child?.Measure(new Size(size, size));
 
         // Return square INCLUDING padding
-        
+
         double width = size + padding.Left + padding.Right;
         double height = size + padding.Top + padding.Bottom;
-        
+
         return new Size(width, height);
     }
 
@@ -34,7 +34,7 @@ public class SquareDecorator : Decorator
 
         double size = Math.Min(innerWidth, innerHeight);
 
-        Rect rect = new Rect(padding.Left, padding.Top, size, size);
+        Rect rect = new(padding.Left, padding.Top, size, size);
 
         Child?.Arrange(rect);
 
