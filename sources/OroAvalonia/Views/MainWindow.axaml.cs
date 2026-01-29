@@ -49,24 +49,19 @@ public partial class MainWindow : Window
 
     private void ResizeGrip_DragDelta(object sender, VectorEventArgs e)
     {
-        Grid mainContainer = this.FindControl<Grid>("MainContainer");
-
-        if (mainContainer == null)
-            return;
-
         double minSize = 100;
 
-        if (mainContainer.Width == minSize && e.Vector.X <= 0 &&
-            mainContainer.Height == minSize && e.Vector.Y <= 0)
+        if (Width == minSize && e.Vector.X <= 0 &&
+            Height == minSize && e.Vector.Y <= 0)
             return;
 
-        double newWidth = mainContainer.Width + e.Vector.X;
-        double newHeight = mainContainer.Height + e.Vector.Y;
+        double newWidth = Width + e.Vector.X;
+        double newHeight = Height + e.Vector.Y;
 
         double size = Math.Min(newWidth, newHeight);
         size = Math.Max(size, minSize);
 
-        mainContainer.Width = size;
-        mainContainer.Height = size;
+        Width = size;
+        Height = size;
     }
 }

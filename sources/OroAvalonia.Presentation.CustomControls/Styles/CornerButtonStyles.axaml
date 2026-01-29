@@ -14,29 +14,30 @@
                     Name="PART_Container"
                     Opacity="0.5">
 
-                    <Grid
-                        Width="100"
-                        Height="100">
+                        <Panel
+                            Width="100"
+                            Height="100">
 
-                        <Path
-                            Name="PART_BackgroundPath"
-                            Data="{TemplateBinding Geometry}"
-                            Fill="{TemplateBinding Background}"
-                            StrokeThickness="0"
-                            StrokeJoin="Round"
-                            Stretch="Fill"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
-                            RenderTransform="{TemplateBinding GeometryTransform}"/>
+                            <Path
+                                Name="PART_BackgroundPath"
+                                Data="{TemplateBinding Geometry}"
+                                Fill="{TemplateBinding Background}"
+                                StrokeThickness="0"
+                                StrokeJoin="Round"
+                                Stretch="UniformToFill"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                RenderTransform="{TemplateBinding GeometryTransform}"/>
 
-                        <ContentPresenter
-                            Name="PART_ContentPresenter"
-                            Content="{TemplateBinding Content}"
-                            HorizontalAlignment="{TemplateBinding ContentHorizontalAlignment}"
-                            VerticalAlignment="{TemplateBinding ContentVerticalAlignment}"
-                            Margin="{TemplateBinding Padding}"/>
+                            <ContentPresenter
+                                Name="PART_ContentPresenter"
+                                Content="{TemplateBinding Content}"
+                                HorizontalAlignment="{TemplateBinding ContentHorizontalAlignment}"
+                                VerticalAlignment="{TemplateBinding ContentVerticalAlignment}"
+                                Margin="{TemplateBinding Padding}"/>
 
-                    </Grid>
+                        </Panel>
+
                 </Viewbox>
             </ControlTemplate>
         </Setter>

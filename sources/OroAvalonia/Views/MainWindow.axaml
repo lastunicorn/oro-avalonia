@@ -9,6 +9,7 @@
 	xmlns:controls="using:DustInTheWind.ClockAvalonia"
 	xmlns:customControls="using:DustInTheWind.OroAvalonia.Presentation.CustomControls"
 	xmlns:converters="using:DustInTheWind.OroAvalonia.Converters"
+	xmlns:local="using:DustInTheWind.OroAvalonia"
 
 	mc:Ignorable="d"
 	d:DesignWidth="800"
@@ -20,11 +21,12 @@
 	TransparencyBackgroundFallback="Transparent"
 	Background="Transparent"
 	ExtendClientAreaToDecorationsHint="True"
-	SizeToContent="WidthAndHeight"
 	WindowStartupLocation="CenterScreen"
 	SystemDecorations="None"
 	ExtendClientAreaTitleBarHeightHint="-1"
-	Topmost="{Binding KeepOnTop}">
+	Topmost="{Binding KeepOnTop}"
+	Width="400"
+	Height="400">
 
 	<Design.DataContext>
 		<!-- This only sets the DataContext for the previewer in an IDE,
@@ -32,53 +34,57 @@
 		<vm:MainViewModel/>
 	</Design.DataContext>
 
-	<Grid
-		x:Name="MainContainer"
-		Width="400"
-		Height="400">
+	<local:SquareDecorator
+		HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch">
+		
+		<Panel x:Name="MainContainer">
 
-		<customControls:CornerButton
-			x:Name="CloseButton"
-			Width="{Binding #MainContainer.Bounds.Width, Converter={x:Static converters:QuarterSizeConverter.Instance}}"
-			Height="{Binding #MainContainer.Bounds.Height, Converter={x:Static converters:QuarterSizeConverter.Instance}}"
-			HorizontalAlignment="Right"
-			VerticalAlignment="Top"
-			Cursor="Hand"
-			Click="CloseButton_Click"
-			Corner="TopRight"
-			CornerRadius="0.05"
-			HoverBackground="Red"
-			IsVisible="{Binding IsNavigationVisible}">
+			<customControls:CornerButton
+				x:Name="CloseButton"
+				Width="{Binding #MainContainer.Bounds.Width, Converter={x:Static converters:QuarterSizeConverter.Instance}}"
+				Height="{Binding #MainContainer.Bounds.Height, Converter={x:Static converters:QuarterSizeConverter.Instance}}"
+				HorizontalAlignment="Right"
+				VerticalAlignment="Top"
+				Cursor="Hand"
+				Click="CloseButton_Click"
+				Corner="TopRight"
+				CornerRadius="0.05"
+				HoverBackground="Red"
+				IsVisible="{Binding IsNavigationVisible}"
+				Padding="10">
 
-			<!-- X Icon -->
-			<Path
-				Data="M 0,0 L 1,1 M 1,0 L 0,1"
-				Stroke="White"
-				StrokeThickness="3"
-				StrokeLineCap="Round"
-				Stretch="Uniform"
-				Width="18"/>
+				<!-- X Icon -->
+				<Path
+					Data="M 0,0 L 1,1 M 1,0 L 0,1"
+					Stroke="White"
+					StrokeThickness="3"
+					StrokeLineCap="Round"
+					Stretch="Uniform"
+					Width="18"/>
 
-		</customControls:CornerButton>
+			</customControls:CornerButton>
 
-		<customControls:CornerThumb
-			x:Name="ResizeGrip"
-			Width="{Binding #MainContainer.Bounds.Width, Converter={x:Static converters:QuarterSizeConverter.Instance}}"
-			Height="{Binding #MainContainer.Bounds.Height, Converter={x:Static converters:QuarterSizeConverter.Instance}}"
-			Classes="ResizeGrip"
-			DragDelta="ResizeGrip_DragDelta"
-			IsVisible="{Binding IsNavigationVisible}" />
+			<customControls:CornerThumb
+				x:Name="ResizeGrip"
+				Width="{Binding #MainContainer.Bounds.Width, Converter={x:Static converters:QuarterSizeConverter.Instance}}"
+				Height="{Binding #MainContainer.Bounds.Height, Converter={x:Static converters:QuarterSizeConverter.Instance}}"
+				Classes="ResizeGrip"
+				DragDelta="ResizeGrip_DragDelta"
+				IsVisible="{Binding IsNavigationVisible}" />
 
-		<Viewbox
-			HorizontalAlignment="Stretch"
-			VerticalAlignment="Stretch">
+			<Viewbox
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch">
 
-			<controls:AnalogClock
-				x:Name="AnalogClock"
-				ClockTemplate="{Binding ClockTemplate}"
-				TimeProvider="{Binding TimeProvider}"/>
+				<controls:AnalogClock
+					x:Name="AnalogClock"
+					ClockTemplate="{Binding ClockTemplate}"
+					TimeProvider="{Binding TimeProvider}"/>
 
-		</Viewbox>
-	</Grid>
+			</Viewbox>
+		</Panel>
+		
+	</local:SquareDecorator>
 
 </Window>
