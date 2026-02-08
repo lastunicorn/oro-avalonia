@@ -36,8 +36,8 @@
 
 	<local:SquareDecorator
 		HorizontalAlignment="Stretch"
-        VerticalAlignment="Stretch">
-		
+		VerticalAlignment="Stretch">
+
 		<Panel x:Name="MainContainer">
 
 			<customControls:CornerButton
@@ -80,11 +80,11 @@
 				<controls:AnalogClock
 					x:Name="AnalogClock"
 					ClockTemplate="{Binding ClockTemplate}"
-					TimeProvider="{Binding TimeProvider}"/>
+					Movement="{Binding ClockMovement}"/>
 
 			</Viewbox>
 		</Panel>
-		
+
 	</local:SquareDecorator>
 
 </Window>

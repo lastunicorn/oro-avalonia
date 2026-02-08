@@ -1,5 +1,5 @@
-﻿using DustInTheWind.ClockAvalonia.Templates;
-using DustInTheWind.ClockAvalonia.TimeProviders;
+﻿using DustInTheWind.ClockAvalonia.Movements;
+using DustInTheWind.ClockAvalonia.Templates;
 using DustInTheWind.OroAvalonia.Ports.SettingsAccess;
 using DustInTheWind.OroAvalonia.ViewModels;
 
@@ -11,7 +11,7 @@ public partial class MainViewModel : ViewModelBase
     private readonly Navigation navigation;
     private bool keepOnTop;
     private ClockTemplate clockTemplate;
-    private ITimeProvider timeProvider;
+    private IMovement clockMovement;
     private bool isNavigationVisible;
 
     public bool KeepOnTop
@@ -40,15 +40,15 @@ public partial class MainViewModel : ViewModelBase
         }
     }
 
-    public ITimeProvider TimeProvider
+    public IMovement ClockMovement
     {
-        get => timeProvider;
+        get => clockMovement;
         set
         {
-            if (timeProvider == value)
+            if (clockMovement == value)
                 return;
 
-            timeProvider = value;
+            clockMovement = value;
             OnPropertyChanged();
         }
     }
@@ -83,10 +83,10 @@ public partial class MainViewModel : ViewModelBase
         Type templateType = typeof(SunTemplate);
         ClockTemplate = Activator.CreateInstance(templateType) as ClockTemplate;
         
-        LocalTimeProvider timeProvider = new();
-        timeProvider.Start();
+        LocalTimeMovement clockMovement = new();
+        clockMovement.Start();
 
-        TimeProvider = timeProvider;
+        ClockMovement = clockMovement;
     }
 
     private void HandleIsNavigationVisibleChanged(object sender, EventArgs e)
