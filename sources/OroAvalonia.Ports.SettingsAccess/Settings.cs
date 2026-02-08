@@ -15,19 +15,9 @@ public class Settings : ISettings
     private const string WindowWidthKey = "StartUp:WindowWidth";
     private const string WindowHeightKey = "StartUp:WindowHeight";
     private const string ClockTemplateTypeKey = "ClockTemplateType";
+
     private readonly IConfigurationRoot configuration;
-
-    private readonly Lazy<JsonSerializerOptions> serializerOptions = new(() =>
-    {
-        JsonSerializerOptions jsonSerializerOptions = new()
-        {
-            ReadCommentHandling = JsonCommentHandling.Skip,
-            AllowTrailingCommas = true,
-            WriteIndented = true
-        };
-
-        return jsonSerializerOptions;
-    });
+    private readonly SettingsStorage settingsStorage = new();
 
     public Settings()
     {
@@ -204,14 +194,12 @@ public class Settings : ISettings
 
     private void Save()
     {
-        string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.json");
-
-        string inputJson = File.ReadAllText(filePath);
-
-        AppSettings appSettingsRoot = JsonSerializer.Deserialize<AppSettings>(inputJson);
-        appSettingsRoot.KeepOnTop = KeepOnTop;
-        appSettingsRoot.Counterclockwise = Counterclockwise;
-        appSettingsRoot.RefreshRate = RefreshRate;
+        AppSettings appSettingsRoot = new()
+        {
+            KeepOnTop = KeepOnTop,
+            Counterclockwise = Counterclockwise,
+            RefreshRate = RefreshRate
+        };
 
         appSettingsRoot.StartUp ??= new StartUp();
 
@@ -230,7 +218,6 @@ public class Settings : ISettings
 
         appSettingsRoot.ClockTemplateType = ClockTemplateType;
 
-        string outputJson = JsonSerializer.Serialize(appSettingsRoot, serializerOptions.Value);
-        File.WriteAllText(filePath, outputJson);
+        settingsStorage.Save(appSettingsRoot);
     }
 }

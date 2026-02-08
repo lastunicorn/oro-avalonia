@@ -10,6 +10,7 @@
 	xmlns:customControls="using:DustInTheWind.OroAvalonia.Presentation.CustomControls"
 	xmlns:converters="using:DustInTheWind.OroAvalonia.Converters"
 	xmlns:local="using:DustInTheWind.OroAvalonia"
+    xmlns:behaviors="using:DustInTheWind.OroAvalonia.Presentation.Behaviors"
 
 	mc:Ignorable="d"
 	d:DesignWidth="800"
@@ -26,7 +27,8 @@
 	ExtendClientAreaTitleBarHeightHint="-1"
 	Topmost="{Binding KeepOnTop}"
 	Width="400"
-	Height="400">
+	Height="400"
+    behaviors:WindowLocationBehavior.Settings="{Binding Settings}">
 
 	<Design.DataContext>
 		<!-- This only sets the DataContext for the previewer in an IDE,
@@ -35,10 +37,11 @@
 	</Design.DataContext>
 
 	<local:SquareDecorator
+        x:Name="MainContainer"
 		HorizontalAlignment="Stretch"
 		VerticalAlignment="Stretch">
 
-		<Panel x:Name="MainContainer">
+		<Panel>
 
 			<customControls:CornerButton
 				x:Name="CloseButton"

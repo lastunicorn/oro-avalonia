@@ -80,6 +80,8 @@ public partial class MainViewModel : ViewModelBase
         }
     }
 
+    public ISettings Settings => settings;
+
     public ToggleNavigationCommand ToggleNavigationCommand { get; }
 
     public MainViewModel(ISettings settings, Navigation navigation, ToggleNavigationCommand toggleNavigationCommand)
