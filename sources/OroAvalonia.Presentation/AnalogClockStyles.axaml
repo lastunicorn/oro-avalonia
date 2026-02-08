@@ -1,0 +1,62 @@
+<Styles
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:controls="using:DustInTheWind.ClockAvalonia">
+
+	<Style Selector="controls|AnalogClock">
+		<Setter Property="Foreground" Value="Gray" />
+
+		<Setter Property="Template">
+			<ControlTemplate>
+
+				<Viewbox>
+					<Grid
+						Background="{TemplateBinding Background}">
+
+                        <!-- "No Shapes" -->
+
+                        <Grid
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            IsVisible="{TemplateBinding IsEmpty}">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock
+                                Grid.Row="0"
+                                Text="No shapes"
+                                FontSize="12"
+                                Foreground="{TemplateBinding Foreground}"
+                                HorizontalAlignment="Center"/>
+
+                            <TextBlock
+                                Grid.Row="1"
+                                Text="Add shapes to the clock or apply a template"
+                                FontSize="8"
+                                Foreground="{TemplateBinding Foreground}"
+                                HorizontalAlignment="Center"
+                                Margin="0 5 0 0"/>
+                        </Grid>
+                        
+                        <!-- Dial -->
+                                
+						<controls:Dial
+							Name="PART_Dial"
+                            Width="200"
+                            Height="200"
+							Shapes="{TemplateBinding Shapes}"
+                            Movement="{TemplateBinding Movement}"
+                            PerformanceMeter="{TemplateBinding PerformanceMeter}"
+                            RotationDirection="{TemplateBinding RotationDirection}"/>
+
+					</Grid>
+				</Viewbox>
+
+			</ControlTemplate>
+		</Setter>
+	</Style>
+
+</Styles>
