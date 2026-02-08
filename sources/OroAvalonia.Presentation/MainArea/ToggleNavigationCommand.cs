@@ -1,7 +1,6 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
-namespace DustInTheWind.OroAvalonia.ViewModels;
+namespace DustInTheWind.OroAvalonia.Presentation.MainArea;
 
 public class ToggleNavigationCommand : ICommand
 {

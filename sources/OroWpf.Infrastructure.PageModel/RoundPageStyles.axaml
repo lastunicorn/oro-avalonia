@@ -1,0 +1,105 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:pageModel="using:DustInTheWind.OroAvalonia.Infrastructure.PageModel">
+
+    <Styles.Resources>
+        <pageModel:HalfSizeConverter x:Key="HalfSizeConverter"/>
+        <pageModel:HalfSizeToPointConverter x:Key="HalfSizeToPointConverter"/>
+    </Styles.Resources>
+
+    <Style Selector="pageModel|RoundPage">
+        <Setter Property="Background" Value="WhiteSmoke" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="pageModel:RoundPage">
+
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="20"
+                        Padding="{TemplateBinding Padding}"
+                        Name="RootBorder">
+
+                        <Border.Clip>
+                            <EllipseGeometry 
+                                Center="{Binding #RootBorder.Bounds.Width, Converter={StaticResource HalfSizeToPointConverter}}"
+                                RadiusX="{Binding #RootBorder.Bounds.Width, Converter={StaticResource HalfSizeConverter}}"
+                                RadiusY="{Binding #RootBorder.Bounds.Height, Converter={StaticResource HalfSizeConverter}}"/>
+                        </Border.Clip>
+
+                        <Grid>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="3*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="6*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Border
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                Background="AliceBlue"
+                                BorderThickness="0 0 0 1"
+                                BorderBrush="LightGray">
+
+                                <StackPanel
+                                    Orientation="Vertical"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+
+                                    <TextBlock
+                                        Text="{TemplateBinding Title}"
+                                        FontSize="22"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"/>
+
+                                    <TextBlock
+                                        Text="{TemplateBinding Subtitle}"
+                                        FontSize="14"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"/>
+
+                                </StackPanel>
+
+                            </Border>
+
+                            <ContentPresenter
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+
+                            <Button
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                Content="Close"
+                                FontSize="22"
+                                Command="{TemplateBinding CloseCommand}"
+                                BorderThickness="0 1 0 0"
+                                BorderBrush="LightGray"/>
+
+                        </Grid>
+
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</Styles>

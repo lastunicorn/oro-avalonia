@@ -4,8 +4,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using CommunityToolkit.Mvvm.DependencyInjection;
-using DustInTheWind.OroAvalonia.ViewModels;
-using DustInTheWind.OroAvalonia.Views;
+using DustInTheWind.OroAvalonia.Presentation.MainArea;
 
 namespace DustInTheWind.OroAvalonia;
 

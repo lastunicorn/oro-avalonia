@@ -1,9 +1,9 @@
-﻿using System;
-using DustInTheWind.ClockAvalonia.Templates;
+﻿using DustInTheWind.ClockAvalonia.Templates;
 using DustInTheWind.ClockAvalonia.TimeProviders;
 using DustInTheWind.OroAvalonia.Ports.SettingsAccess;
+using DustInTheWind.OroAvalonia.ViewModels;
 
-namespace DustInTheWind.OroAvalonia.ViewModels;
+namespace DustInTheWind.OroAvalonia.Presentation.MainArea;
 
 public partial class MainViewModel : ViewModelBase
 {
@@ -79,11 +79,6 @@ public partial class MainViewModel : ViewModelBase
 
         navigation.IsNavigationVisibleChanged += HandleIsNavigationVisibleChanged;
         IsNavigationVisible = navigation.IsNavigationVisible;
-
-        //ClockTemplate = new DefaultTemplate();
-        //ClockTemplate = new FancyTemplate();
-        //ClockTemplate = new PandaTemplate();
-        //ClockTemplate = new PlayfulTemplate();
 
         Type templateType = typeof(SunTemplate);
         ClockTemplate = Activator.CreateInstance(templateType) as ClockTemplate;

@@ -1,12 +1,9 @@
-using System;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using DustInTheWind.ClockAvalonia;
-using DustInTheWind.ClockAvalonia.TimeProviders;
-using DustInTheWind.OroAvalonia.ViewModels;
 
-namespace DustInTheWind.OroAvalonia.Views;
+namespace DustInTheWind.OroAvalonia.Presentation.MainArea;
 
 public partial class MainWindow : Window
 {

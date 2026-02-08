@@ -1,6 +1,5 @@
 ﻿using DustInTheWind.OroAvalonia.Ports.SettingsAccess;
-using DustInTheWind.OroAvalonia.ViewModels;
-using DustInTheWind.OroAvalonia.Views;
+using DustInTheWind.OroAvalonia.Presentation.MainArea;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DustInTheWind.OroAvalonia;
