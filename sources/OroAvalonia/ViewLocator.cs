@@ -1,7 +1,7 @@
 using System;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using DustInTheWind.OroAvalonia.ViewModels;
+using DustInTheWind.OroAvalonia.Presentation.ViewModels;
 
 namespace DustInTheWind.OroAvalonia;
 

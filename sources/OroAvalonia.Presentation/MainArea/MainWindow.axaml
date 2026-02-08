@@ -81,7 +81,8 @@
 				<controls:AnalogClock
 					x:Name="AnalogClock"
 					ClockTemplate="{Binding ClockTemplate}"
-					Movement="{Binding ClockMovement}"/>
+					Movement="{Binding ClockMovement}"
+					RotationDirection="{Binding ClockDirection}"/>
 
 			</Viewbox>
 		</Panel>

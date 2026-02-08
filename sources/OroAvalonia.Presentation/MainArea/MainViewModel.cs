@@ -1,7 +1,8 @@
 ﻿using DustInTheWind.ClockAvalonia.Movements;
+using DustInTheWind.ClockAvalonia.Shapes;
 using DustInTheWind.ClockAvalonia.Templates;
 using DustInTheWind.OroAvalonia.Ports.SettingsAccess;
-using DustInTheWind.OroAvalonia.ViewModels;
+using DustInTheWind.OroAvalonia.Presentation.ViewModels;
 
 namespace DustInTheWind.OroAvalonia.Presentation.MainArea;
 
@@ -53,6 +54,19 @@ public partial class MainViewModel : ViewModelBase
         }
     }
 
+    public RotationDirection ClockDirection
+    {
+        get => field;
+        set
+        {
+            if (field == value)
+                return;
+
+            field = value;
+            OnPropertyChanged();
+        }
+    }
+
     public bool IsNavigationVisible
     {
         get => isNavigationVisible;
@@ -75,22 +89,73 @@ public partial class MainViewModel : ViewModelBase
 
         ToggleNavigationCommand = toggleNavigationCommand ?? throw new ArgumentNullException(nameof(toggleNavigationCommand));
 
-        KeepOnTop = settings.KeepOnTop;
-
         navigation.IsNavigationVisibleChanged += HandleIsNavigationVisibleChanged;
-        IsNavigationVisible = navigation.IsNavigationVisible;
+        settings.KeepOnTopChanged += HandleKeepOnTopChanged;
+        settings.RefreshRateChanged += HandleRefreshRateChanged;
+        settings.CounterclockwiseChanged += HandleCounterclockwiseChanged;
 
-        Type templateType = typeof(SunTemplate);
-        ClockTemplate = Activator.CreateInstance(templateType) as ClockTemplate;
-        
-        LocalTimeMovement clockMovement = new();
-        clockMovement.Start();
+        Initialize();
+    }
 
-        ClockMovement = clockMovement;
+    private void Initialize()
+    {
+        Initialize(() =>
+        {
+            KeepOnTop = settings.KeepOnTop;
+
+            IsNavigationVisible = navigation.IsNavigationVisible;
+
+            Type templateType = Type.GetType(settings.ClockTemplateType) ?? typeof(DefaultTemplate);
+            ClockTemplate = Activator.CreateInstance(templateType) as ClockTemplate;
+
+            LocalTimeMovement clockMovement = new()
+            {
+                TickInterval = (int)Math.Round(1000 / settings.RefreshRate)
+            };
+            clockMovement.Start();
+
+            ClockMovement = clockMovement;
+
+            ClockDirection = settings.Counterclockwise
+                ? RotationDirection.Counterclockwise
+                : RotationDirection.Clockwise;
+        });
     }
 
     private void HandleIsNavigationVisibleChanged(object sender, EventArgs e)
     {
-        IsNavigationVisible = navigation.IsNavigationVisible;
+        Initialize(() =>
+        {
+            IsNavigationVisible = navigation.IsNavigationVisible;
+        });
+    }
+
+    private void HandleKeepOnTopChanged(object sender, EventArgs e)
+    {
+        Initialize(() =>
+        {
+            KeepOnTop = settings.KeepOnTop;
+        });
+    }
+
+    private void HandleRefreshRateChanged(object sender, EventArgs e)
+    {
+        if (ClockMovement == null)
+            return;
+
+        Initialize(() =>
+        {
+            ClockMovement.TickInterval = (int)Math.Round(1000 / settings.RefreshRate);
+        });
+    }
+
+    private void HandleCounterclockwiseChanged(object sender, EventArgs e)
+    {
+        Initialize(() =>
+        {
+            ClockDirection = settings.Counterclockwise
+                ? RotationDirection.Counterclockwise
+                : RotationDirection.Clockwise;
+        });
     }
 }
