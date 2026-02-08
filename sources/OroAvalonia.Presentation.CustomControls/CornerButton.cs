@@ -26,7 +26,7 @@ public class CornerButton : Button
 
     public static readonly StyledProperty<double> CornerRadiusProperty = AvaloniaProperty.Register<CornerButton, double>(
         nameof(CornerRadius),
-        0.1);
+        10);
 
     public double CornerRadius
     {

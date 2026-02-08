@@ -19,29 +19,29 @@ public class CornerThumb : Thumb
 
     #endregion
 
-    //#region CornerRadius Styled Property
+    #region CornerRadius Styled Property
 
-    //public static readonly StyledProperty<double> CornerRadiusProperty = AvaloniaProperty.Register<CornerThumb, double>(
-    //    name: nameof(CornerRadius),
-    //    defaultValue: 0.1);
+    public static readonly StyledProperty<double> CornerRadiusProperty = AvaloniaProperty.Register<CornerThumb, double>(
+        name: nameof(CornerRadius),
+        defaultValue: 10);
 
-    //public double CornerRadius
-    //{
-    //    get => (double)GetValue(CornerRadiusProperty);
-    //    set => SetValue(CornerRadiusProperty, value);
-    //}
+    public double CornerRadius
+    {
+        get => (double)GetValue(CornerRadiusProperty);
+        set => SetValue(CornerRadiusProperty, value);
+    }
 
-    //#endregion
+    #endregion
 
     static CornerThumb()
     {
-        //CornerRadiusProperty.Changed.AddClassHandler<CornerThumb>(HandleCornerRadiusPropertyChanged);
+        CornerRadiusProperty.Changed.AddClassHandler<CornerThumb>(HandleCornerRadiusPropertyChanged);
     }
 
-    //private static void HandleCornerRadiusPropertyChanged(CornerThumb cornerThumb, AvaloniaPropertyChangedEventArgs e)
-    //{
-    //    cornerThumb.UpdateVisualElements();
-    //}
+    private static void HandleCornerRadiusPropertyChanged(CornerThumb cornerThumb, AvaloniaPropertyChangedEventArgs e)
+    {
+        cornerThumb.UpdateVisualElements();
+    }
 
     public CornerThumb()
     {
@@ -52,7 +52,7 @@ public class CornerThumb : Thumb
     {
         Geometry = new TopLeftCornerShape()
         {
-            CornerRadius = 0.05
+            CornerRadius = CornerRadius
         };
     }
 }

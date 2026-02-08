@@ -24,7 +24,7 @@
                                 Fill="{TemplateBinding Background}"
                                 StrokeThickness="0"
                                 StrokeJoin="Round"
-                                Stretch="UniformToFill"
+                                Stretch="Fill"
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"
                                 RenderTransform="{TemplateBinding GeometryTransform}"/>
