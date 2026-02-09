@@ -22,7 +22,7 @@
 			<PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
 		</PackageReference>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-		<PackageReference Include="DustInTheWind.ClockAvalonia" Version="1.1.0" />
+		<PackageReference Include="DustInTheWind.ClockAvalonia" Version="1.2.0" />
 	</ItemGroup>
 
 	<ItemGroup>
