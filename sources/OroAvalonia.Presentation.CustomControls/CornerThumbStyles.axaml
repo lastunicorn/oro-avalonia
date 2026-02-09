@@ -53,7 +53,7 @@
         </Setter>
     </Style>
 
-    <Style Selector="Thumb.ResizeGrip:pointerover /template/ Viewbox#PART_Container">
+    <Style Selector="controls|CornerThumb.ResizeGrip:pointerover /template/ Viewbox#PART_Container">
         <Setter Property="Opacity" Value="1"/>
     </Style>
 
