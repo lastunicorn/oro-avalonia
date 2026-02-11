@@ -17,6 +17,7 @@
         <StyleInclude Source="avares://DustInTheWind.OroAvalonia.Presentation/AnalogClockStyles.axaml"/>
         <StyleInclude Source="avares://DustInTheWind.OroAvalonia.Presentation.CustomControls/CornerButtonStyles.axaml"/>
         <StyleInclude Source="avares://DustInTheWind.OroAvalonia.Presentation.CustomControls/CornerThumbStyles.axaml"/>
+        <StyleInclude Source="avares://DustInTheWind.OroAvalonia.Infrastructure.PageModel/RoundPageStyles.axaml"/>
     </Application.Styles>
 
 </Application>

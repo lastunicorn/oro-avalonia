@@ -7,7 +7,7 @@ namespace DustInTheWind.OroAvalonia.Infrastructure.PageModel;
 /// <summary>
 /// Interaction logic for RoundPage.xaml
 /// </summary>
-public class RoundPage : ContentControl
+public class RoundPage : UserControl
 {
     #region Title Styled Property
 

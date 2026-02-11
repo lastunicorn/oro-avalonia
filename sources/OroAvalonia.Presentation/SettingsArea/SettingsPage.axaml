@@ -1,89 +1,91 @@
-<UserControl
+<pageModel:RoundPage
 	x:Class="DustInTheWind.OroAvalonia.Presentation.SettingsArea.SettingsPage"
 
 	xmlns="https://github.com/avaloniaui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	xmlns:dataConverters="using:DustInTheWind.OroAvalonia.Presentation.DataConverters"
-    xmlns:shapes="using:DustInTheWind.ClockAvalonia.Shapes"
+    xmlns:pageModel="using:DustInTheWind.OroAvalonia.Infrastructure.PageModel"
+    xmlns:settingsArea="using:DustInTheWind.OroAvalonia.Presentation.SettingsArea"
 
 	mc:Ignorable="d"
 	d:DesignWidth="800"
 	d:DesignHeight="450">
 	
-    <UserControl.Resources>
-        <dataConverters:EnumToBooleanConverter x:Key="EnumToBooleanConverter"/>
-    </UserControl.Resources>
+    <Border
+        Background="WhiteSmoke"
+        Padding="0 8 0 14">
 
-    <Grid VerticalAlignment="Top">
+        <TabControl
+            BorderThickness="0"
+            BorderBrush="LightGray"
+            Background="WhiteSmoke"
+            Padding="0 10 0 0">
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+            <!--<TabControl.Resources>
+                <Style Selector="TabItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                                <Grid Name="Panel">
+                                    <ContentPresenter
+                                        x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Panel" Property="Background" Value="LightGray" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>-->
 
-        <StackPanel
-            Grid.Row="0"
-            Orientation="Vertical">
+            <TabItem
+                Header="Templates">
 
-            <TextBlock
-                Text="General"
-                FontSize="14"
-                FontWeight="DemiBold"/>
+                <!--<templates:TemplatesControl
+                    DataContext="{Binding TemplatesViewModel, Mode=OneWay}"/>-->
 
-            <CheckBox
-                IsChecked="{Binding KeepOnTop}"
-                Content="Keep on top"
-                Margin="15 8 0 0"/>
+                <TextBlock
+                    Text="Templates"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    FontWeight="DemiBold"/>
 
-        </StackPanel>
+            </TabItem>
 
-        <StackPanel
-            Grid.Row="1"
-            Orientation="Vertical"
-            Margin="0 10 0 0">
+            <TabItem
+                Header="Settings">
 
-            <TextBlock
-                Text="Clock Direction"
-                FontSize="14"
-                FontWeight="DemiBold" />
+                <settingsArea:SettingsControl
+                    DataContext="{Binding SettingsViewModel, Mode=OneWay}"/>
 
-            <StackPanel 
-                Orientation="Vertical"
-                Margin="15 8 0 0">
+            </TabItem>
 
-                <RadioButton 
-                    Content="Clockwise"
-                    IsChecked="{Binding ClockDirection, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static shapes:RotationDirection.Clockwise}}"
-                    Margin="0 0 0 8"
-                    VerticalAlignment="Center"/>
+            <TabItem
+                Header="About">
 
-                <RadioButton 
-                    Content="Counterclockwise"
-                    IsChecked="{Binding ClockDirection, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static shapes:RotationDirection.Counterclockwise}}"
-                    VerticalAlignment="Center"/>
-            </StackPanel>
+                <!--<about:AboutControl
+                    DataContext="{Binding AboutViewModel, Mode=OneWay}"/>-->
 
-        </StackPanel>
+                <TextBlock
+                    Text="About"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    FontWeight="DemiBold"/>
 
-        <StackPanel
-            Grid.Row="2"
-            Orientation="Vertical"
-            Margin="0 10 0 0">
+            </TabItem>
 
-            <TextBlock
-                Text="Refresh Rate (times per second)"
-                FontSize="14"
-                FontWeight="DemiBold"/>
+        </TabControl>
 
-            <TextBox
-                Text="{Binding RefreshRate, UpdateSourceTrigger=PropertyChanged}"
-                Margin="15 8 0 0"
-                VerticalAlignment="Center"/>
+    </Border>
 
-        </StackPanel>
-
-    </Grid>
-</UserControl>
+</pageModel:RoundPage>
