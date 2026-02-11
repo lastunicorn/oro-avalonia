@@ -1,22 +1,23 @@
 ﻿using System.Windows.Input;
+using DustInTheWind.OroAvalonia.Infrastructure.PageModel;
 
 namespace DustInTheWind.OroAvalonia.Presentation.MainArea;
 
 public class ToggleNavigationCommand : ICommand
 {
-    private readonly Navigation navigation;
+    private readonly PageEngine pageEngine;
     
     public event EventHandler CanExecuteChanged;
     
-    public ToggleNavigationCommand(Navigation navigation)
+    public ToggleNavigationCommand(PageEngine pageEngine)
     {
-        this.navigation = navigation ?? throw new ArgumentNullException(nameof(navigation));
+        this.pageEngine = pageEngine ?? throw new ArgumentNullException(nameof(pageEngine));
     }
     
     public bool CanExecute(object parameter) => true;
     
     public void Execute(object parameter)
     {
-        navigation.ToggleNavigation();
+        pageEngine.ToggleNavigation();
     }
 }

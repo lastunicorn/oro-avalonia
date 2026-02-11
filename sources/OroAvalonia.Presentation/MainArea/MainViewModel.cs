@@ -1,7 +1,11 @@
-﻿using DustInTheWind.ClockAvalonia.Movements;
+﻿using Avalonia.Controls;
+using DustInTheWind.ClockAvalonia.Movements;
 using DustInTheWind.ClockAvalonia.Shapes;
 using DustInTheWind.ClockAvalonia.Templates;
+using DustInTheWind.OroAvalonia.Infrastructure.PageModel;
 using DustInTheWind.OroAvalonia.Ports.SettingsAccess;
+using DustInTheWind.OroAvalonia.Presentation.ClockArea;
+using DustInTheWind.OroAvalonia.Presentation.SettingsArea;
 using DustInTheWind.OroAvalonia.Presentation.ViewModels;
 using DustInTheWind.OroWpf.Presentation;
 
@@ -10,12 +14,27 @@ namespace DustInTheWind.OroAvalonia.Presentation.MainArea;
 public partial class MainViewModel : ViewModelBase
 {
     private readonly ISettings settings;
-    private readonly Navigation navigation;
+    private readonly PageEngine pageEngine;
     private readonly ApplicationState applicationState;
+    private readonly IPageFactory pageFactory;
     private bool keepOnTop;
     private ClockTemplate clockTemplate;
     private IMovement clockMovement;
     private bool isNavigationVisible;
+
+    public Control CurrentPage
+    {
+        get => field;
+        private set
+        {
+            if (field == value)
+                return;
+
+            field = value;
+
+            OnPropertyChanged();
+        }
+    }
 
     public bool KeepOnTop
     {
@@ -101,19 +120,22 @@ public partial class MainViewModel : ViewModelBase
 
     public SettingsCommand SettingsCommand { get; }
 
-    public MainViewModel(ISettings settings, Navigation navigation,
+    public MainViewModel(ISettings settings, PageEngine pageEngine,
         ApplicationState applicationState,
+        IPageFactory pageFactory,
         ToggleNavigationCommand toggleNavigationCommand,
         SettingsCommand settingsCommand)
     {
         this.settings = settings ?? throw new System.ArgumentNullException(nameof(settings));
-        this.navigation = navigation ?? throw new ArgumentNullException(nameof(navigation));
+        this.pageEngine = pageEngine ?? throw new ArgumentNullException(nameof(pageEngine));
         this.applicationState = applicationState ?? throw new ArgumentNullException(nameof(applicationState));
-
+        this.pageFactory = pageFactory ?? throw new ArgumentNullException(nameof(pageFactory));
+        
         ToggleNavigationCommand = toggleNavigationCommand ?? throw new ArgumentNullException(nameof(toggleNavigationCommand));
         SettingsCommand = settingsCommand ?? throw new ArgumentNullException(nameof(settingsCommand));
 
-        navigation.IsNavigationVisibleChanged += HandleIsNavigationVisibleChanged;
+        pageEngine.CurrentPageChanged += HandlePageChanged;
+        pageEngine.IsNavigationVisibleChanged += HandleIsNavigationVisibleChanged;
         settings.KeepOnTopChanged += HandleKeepOnTopChanged;
         settings.RefreshRateChanged += HandleRefreshRateChanged;
         settings.CounterclockwiseChanged += HandleCounterclockwiseChanged;
@@ -125,9 +147,11 @@ public partial class MainViewModel : ViewModelBase
     {
         Initialize(() =>
         {
+            DisplayCurrentPage();
+
             KeepOnTop = settings.KeepOnTop;
 
-            IsNavigationVisible = navigation.IsNavigationVisible;
+            IsNavigationVisible = pageEngine.IsNavigationVisible;
 
             ClockTemplate = applicationState.ClockTemplate;
 
@@ -149,7 +173,7 @@ public partial class MainViewModel : ViewModelBase
     {
         Initialize(() =>
         {
-            IsNavigationVisible = navigation.IsNavigationVisible;
+            IsNavigationVisible = pageEngine.IsNavigationVisible;
         });
     }
 
@@ -180,5 +204,48 @@ public partial class MainViewModel : ViewModelBase
                 ? RotationDirection.Counterclockwise
                 : RotationDirection.Clockwise;
         });
+    }
+
+    private void HandlePageChanged(object sender, EventArgs e)
+    {
+        RemoveCurrentPage();
+        DisplayCurrentPage();
+    }
+
+    private void RemoveCurrentPage()
+    {
+        if (CurrentPage != null)
+        {
+            if (CurrentPage.DataContext is PageViewModel pageViewModel)
+                pageViewModel.PrepareForClose();
+
+            CurrentPage = null;
+        }
+    }
+
+    private void DisplayCurrentPage()
+    {
+        if (pageEngine.CurrentPage?.ViewType == typeof(SettingsPage))
+        {
+            CurrentPage = pageFactory.CreatePage<SettingsPage, SettingsPageModel>();
+            IsSettingsPageActive = true;
+        }
+        else if (pageEngine.CurrentPage?.ViewType == typeof(ClockPage))
+        {
+            CurrentPage = GetOrCreateClockPage();
+            IsSettingsPageActive = false;
+        }
+        else
+        {
+            pageEngine.SelectPage("clock");
+        }
+    }
+
+    private ClockPage clockPage;
+
+    private ClockPage GetOrCreateClockPage()
+    {
+        clockPage ??= pageFactory.CreatePage<ClockPage, ClockPageModel>();
+        return clockPage;
     }
 }

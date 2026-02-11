@@ -1,8 +1,11 @@
 ﻿using System.Reflection;
 using DustInTheWind.ClockAvalonia.Templates;
+using DustInTheWind.OroAvalonia.Infrastructure.PageModel;
 using DustInTheWind.OroAvalonia.Ports.SettingsAccess;
 using DustInTheWind.OroAvalonia.Presentation;
+using DustInTheWind.OroAvalonia.Presentation.ClockArea;
 using DustInTheWind.OroAvalonia.Presentation.MainArea;
+using DustInTheWind.OroAvalonia.Presentation.SettingsArea;
 using DustInTheWind.OroWpf.Presentation;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,16 +15,24 @@ internal static class Setup
 {
     public static void ConfigureServices(IServiceCollection serviceCollection)
     {
-        serviceCollection.AddSingleton<Navigation>();
-
         ISettings settings = new Settings();
         serviceCollection.AddSingleton(settings);
+
+        PageEngine pageEngine = CreatePageEngine();
+        serviceCollection.AddSingleton(pageEngine);
+        serviceCollection.AddSingleton<IPageFactory, PageFactory>();
 
         ApplicationState applicationState = CreateApplicationState(settings);
         serviceCollection.AddSingleton(applicationState);
 
         serviceCollection.AddTransient<MainWindow>();
         serviceCollection.AddTransient<MainViewModel>();
+
+        serviceCollection.AddTransient<ClockPage>();
+        serviceCollection.AddTransient<ClockPageModel>();
+
+        serviceCollection.AddTransient<SettingsPage>();
+        serviceCollection.AddTransient<SettingsPageModel>();
 
         serviceCollection.AddTransient<ToggleNavigationCommand>();
         serviceCollection.AddTransient<SettingsCommand>();
@@ -88,5 +99,26 @@ internal static class Setup
                 }
             })
             .Where(x => x.IsClass && !x.IsAbstract && x.IsSubclassOf(typeof(ClockTemplate)));
+    }
+
+    private static PageEngine CreatePageEngine()
+    {
+        PageEngine pageEngine = new();
+
+        pageEngine.Pages.Add(new Page
+        {
+            Id = "clock",
+            ViewType = typeof(ClockPage)
+        });
+
+        pageEngine.Pages.Add(new Page
+        {
+            Id = "settings",
+            ViewType = typeof(SettingsPage)
+        });
+
+        pageEngine.SelectPage("clock");
+
+        return pageEngine;
     }
 }

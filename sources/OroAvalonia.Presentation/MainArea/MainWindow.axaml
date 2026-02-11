@@ -100,7 +100,15 @@
 				IsVisible="{Binding IsNavigationVisible}"
 				CornerRadius="5"/>
 
-			<Viewbox
+			<ContentControl
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				Content="{Binding CurrentPage}"
+				IsTabStop="False">
+
+			</ContentControl>
+
+			<!--<Viewbox
 				HorizontalAlignment="Stretch"
 				VerticalAlignment="Stretch">
 
@@ -110,7 +118,7 @@
 					Movement="{Binding ClockMovement}"
 					RotationDirection="{Binding ClockDirection}"/>
 
-			</Viewbox>
+			</Viewbox>-->
 		</Panel>
 
 	</local:SquareDecorator>
