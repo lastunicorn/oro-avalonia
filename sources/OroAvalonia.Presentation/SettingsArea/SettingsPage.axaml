@@ -2,6 +2,7 @@
 	x:Class="DustInTheWind.OroAvalonia.Presentation.SettingsArea.SettingsPage"
 
 	xmlns="https://github.com/avaloniaui"
+    xmlns:componentmodel="using:System.ComponentModel"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -10,82 +11,59 @@
 
 	mc:Ignorable="d"
 	d:DesignWidth="800"
-	d:DesignHeight="450">
-	
-    <Border
-        Background="WhiteSmoke"
-        Padding="0 8 0 14">
+	d:DesignHeight="450"
 
-        <TabControl
-            BorderThickness="0"
-            BorderBrush="LightGray"
-            Background="WhiteSmoke"
-            Padding="0 10 0 0">
+    Title="Settings"
+    CloseCommand="{Binding SettingsCloseCommand}">
 
-            <!--<TabControl.Resources>
-                <Style Selector="TabItem">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="TabItem">
-                                <Grid Name="Panel">
-                                    <ContentPresenter
-                                        x:Name="ContentSite"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Center"
-                                        ContentSource="Header"
-                                        Margin="10,2"/>
-                                </Grid>
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="IsSelected" Value="True">
-                                        <Setter TargetName="Panel" Property="Background" Value="LightGray" />
-                                    </Trigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </TabControl.Resources>-->
+    <Design.DataContext>
+        <settingsArea:SettingsViewModel/>
+    </Design.DataContext>
+        
+    <TabControl
+        BorderThickness="0"
+        BorderBrush="LightGray"
+        Background="Transparent"
+        Padding="0 10 0 0">
 
-            <TabItem
-                Header="Templates">
+        <TabItem
+            Header="Templates">
 
-                <!--<templates:TemplatesControl
-                    DataContext="{Binding TemplatesViewModel, Mode=OneWay}"/>-->
+            <!--<templates:TemplatesControl
+                DataContext="{Binding TemplatesViewModel, Mode=OneWay}"/>-->
 
-                <TextBlock
-                    Text="Templates"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    FontSize="16"
-                    FontWeight="DemiBold"/>
+            <TextBlock
+                Text="Templates"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="16"
+                FontWeight="DemiBold"/>
 
-            </TabItem>
+        </TabItem>
 
-            <TabItem
-                Header="Settings">
+        <TabItem
+            Header="Settings">
 
-                <settingsArea:SettingsControl
-                    DataContext="{Binding SettingsViewModel, Mode=OneWay}"/>
+            <settingsArea:SettingsControl
+                DataContext="{Binding SettingsViewModel, Mode=OneWay}"/>
 
-            </TabItem>
+        </TabItem>
 
-            <TabItem
-                Header="About">
+        <TabItem
+            Header="About">
 
-                <!--<about:AboutControl
-                    DataContext="{Binding AboutViewModel, Mode=OneWay}"/>-->
+            <!--<about:AboutControl
+                DataContext="{Binding AboutViewModel, Mode=OneWay}"/>-->
 
-                <TextBlock
-                    Text="About"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    FontSize="16"
-                    FontWeight="DemiBold"/>
+            <TextBlock
+                Text="About"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="16"
+                FontWeight="DemiBold"/>
 
-            </TabItem>
+        </TabItem>
 
-        </TabControl>
-
-    </Border>
+    </TabControl>
 
 </pageModel:RoundPage>

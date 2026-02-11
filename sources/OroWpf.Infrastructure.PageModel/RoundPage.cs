@@ -4,10 +4,7 @@ using Avalonia.Controls;
 
 namespace DustInTheWind.OroAvalonia.Infrastructure.PageModel;
 
-/// <summary>
-/// Interaction logic for RoundPage.xaml
-/// </summary>
-public class RoundPage : UserControl
+public class RoundPage : ContentControl
 {
     #region Title Styled Property
 

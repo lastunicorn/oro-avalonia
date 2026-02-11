@@ -8,8 +8,8 @@
         <pageModel:HalfSizeToPointConverter x:Key="HalfSizeToPointConverter"/>
     </Styles.Resources>
 
-    <Style Selector="pageModel|RoundPage">
-        <Setter Property="Background" Value="WhiteSmoke" />
+    <Style Selector=":is(pageModel|RoundPage)">
+        <Setter Property="Background" Value="DarkGray" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -80,6 +80,8 @@
                             <ContentPresenter
                                 Grid.Row="1"
                                 Grid.Column="1"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
 
@@ -91,7 +93,11 @@
                                 FontSize="22"
                                 Command="{TemplateBinding CloseCommand}"
                                 BorderThickness="0 1 0 0"
-                                BorderBrush="LightGray"/>
+                                BorderBrush="LightGray"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"/>
 
                         </Grid>
 

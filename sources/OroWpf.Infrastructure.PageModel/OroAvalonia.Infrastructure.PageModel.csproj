@@ -21,9 +21,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="RoundPageStyles.axaml">
-			<SubType>Designer</SubType>
-		</None>
+		<AvaloniaResource Include="RoundPageStyles.axaml" />
 	</ItemGroup>
 
 </Project>

@@ -33,9 +33,11 @@ internal static class Setup
 
         serviceCollection.AddTransient<SettingsPage>();
         serviceCollection.AddTransient<SettingsPageModel>();
+        serviceCollection.AddTransient<SettingsViewModel>();
 
         serviceCollection.AddTransient<ToggleNavigationCommand>();
         serviceCollection.AddTransient<SettingsCommand>();
+        serviceCollection.AddTransient<SettingsCloseCommand>();
     }
 
     private static ApplicationState CreateApplicationState(ISettings settings)
