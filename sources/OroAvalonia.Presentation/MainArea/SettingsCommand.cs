@@ -2,21 +2,24 @@
 
 namespace DustInTheWind.OroAvalonia.Presentation.MainArea;
 
-public class ToggleNavigationCommand : ICommand
+public class SettingsCommand : ICommand
 {
     private readonly Navigation navigation;
-    
+
     public event EventHandler CanExecuteChanged;
-    
-    public ToggleNavigationCommand(Navigation navigation)
+
+    public SettingsCommand(Navigation navigation)
     {
         this.navigation = navigation ?? throw new ArgumentNullException(nameof(navigation));
     }
-    
+
     public bool CanExecute(object parameter) => true;
-    
+
     public void Execute(object parameter)
     {
-        navigation.ToggleNavigation();
+        if (navigation.CurrentPage == null || navigation.CurrentPage.Id == "settings")
+            navigation.SelectPage("clock");
+        else
+            navigation.SelectPage("settings");
     }
 }

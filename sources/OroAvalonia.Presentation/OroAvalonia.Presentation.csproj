@@ -28,6 +28,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\OroAvalonia.Ports.SettingsAccess\OroAvalonia.Ports.SettingsAccess.csproj" />
 		<ProjectReference Include="..\OroAvalonia.Presentation.CustomControls\OroAvalonia.Presentation.CustomControls.csproj" />
+		<ProjectReference Include="..\OroWpf.Infrastructure.PageModel\OroAvalonia.Infrastructure.PageModel.csproj" />
 	</ItemGroup>
 
 </Project>

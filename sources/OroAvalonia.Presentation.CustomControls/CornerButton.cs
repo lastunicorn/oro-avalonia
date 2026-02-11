@@ -105,6 +105,19 @@ public class CornerButton : Button
 
     #endregion
 
+    #region IsActive Styled Property
+
+    public static readonly StyledProperty<bool> IsActiveProperty = AvaloniaProperty.Register<CornerButton, bool>(
+        nameof(IsActive));
+
+    public bool IsActive
+    {
+        get => GetValue(IsActiveProperty);
+        set => SetValue(IsActiveProperty, value);
+    }
+
+    #endregion
+
     static CornerButton()
     {
         CornerProperty.Changed.AddClassHandler<CornerButton>((button, e) => button.UpdateVisualElements());

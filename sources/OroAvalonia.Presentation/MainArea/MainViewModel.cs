@@ -82,20 +82,37 @@ public partial class MainViewModel : ViewModelBase
         }
     }
 
+    public bool IsSettingsPageActive
+    {
+        get => field;
+        private set
+        {
+            if (field == value)
+                return;
+
+            field = value;
+            OnPropertyChanged();
+        }
+    }
+
     public ISettings Settings => settings;
 
     public ToggleNavigationCommand ToggleNavigationCommand { get; }
 
+    public SettingsCommand SettingsCommand { get; }
+
     public MainViewModel(ISettings settings, Navigation navigation,
+        ApplicationState applicationState,
         ToggleNavigationCommand toggleNavigationCommand,
-        ApplicationState applicationState)
+        SettingsCommand settingsCommand)
     {
         this.settings = settings ?? throw new System.ArgumentNullException(nameof(settings));
         this.navigation = navigation ?? throw new ArgumentNullException(nameof(navigation));
         this.applicationState = applicationState ?? throw new ArgumentNullException(nameof(applicationState));
 
         ToggleNavigationCommand = toggleNavigationCommand ?? throw new ArgumentNullException(nameof(toggleNavigationCommand));
-        
+        SettingsCommand = settingsCommand ?? throw new ArgumentNullException(nameof(settingsCommand));
+
         navigation.IsNavigationVisibleChanged += HandleIsNavigationVisibleChanged;
         settings.KeepOnTopChanged += HandleKeepOnTopChanged;
         settings.RefreshRateChanged += HandleRefreshRateChanged;

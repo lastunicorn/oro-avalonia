@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using DustInTheWind.ClockAvalonia.Templates;
 using DustInTheWind.OroAvalonia.Ports.SettingsAccess;
+using DustInTheWind.OroAvalonia.Presentation;
 using DustInTheWind.OroAvalonia.Presentation.MainArea;
 using DustInTheWind.OroWpf.Presentation;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,6 +24,7 @@ internal static class Setup
         serviceCollection.AddTransient<MainViewModel>();
 
         serviceCollection.AddTransient<ToggleNavigationCommand>();
+        serviceCollection.AddTransient<SettingsCommand>();
     }
 
     private static ApplicationState CreateApplicationState(ISettings settings)

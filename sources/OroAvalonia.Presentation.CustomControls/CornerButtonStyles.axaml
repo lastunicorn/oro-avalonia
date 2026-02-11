@@ -52,4 +52,8 @@
         <Setter Property="Stroke" Value="{TemplateBinding HoverBackground}"/>
     </Style>
 
+    <Style Selector="controls|CornerButton[IsActive=True] /template/ Viewbox#PART_Container">
+        <Setter Property="Opacity" Value="1"/>
+    </Style>
+
 </Styles>
