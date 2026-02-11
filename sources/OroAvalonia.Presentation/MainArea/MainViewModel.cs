@@ -3,6 +3,7 @@ using DustInTheWind.ClockAvalonia.Shapes;
 using DustInTheWind.ClockAvalonia.Templates;
 using DustInTheWind.OroAvalonia.Ports.SettingsAccess;
 using DustInTheWind.OroAvalonia.Presentation.ViewModels;
+using DustInTheWind.OroWpf.Presentation;
 
 namespace DustInTheWind.OroAvalonia.Presentation.MainArea;
 
@@ -10,6 +11,7 @@ public partial class MainViewModel : ViewModelBase
 {
     private readonly ISettings settings;
     private readonly Navigation navigation;
+    private readonly ApplicationState applicationState;
     private bool keepOnTop;
     private ClockTemplate clockTemplate;
     private IMovement clockMovement;
@@ -84,13 +86,16 @@ public partial class MainViewModel : ViewModelBase
 
     public ToggleNavigationCommand ToggleNavigationCommand { get; }
 
-    public MainViewModel(ISettings settings, Navigation navigation, ToggleNavigationCommand toggleNavigationCommand)
+    public MainViewModel(ISettings settings, Navigation navigation,
+        ToggleNavigationCommand toggleNavigationCommand,
+        ApplicationState applicationState)
     {
         this.settings = settings ?? throw new System.ArgumentNullException(nameof(settings));
         this.navigation = navigation ?? throw new ArgumentNullException(nameof(navigation));
+        this.applicationState = applicationState ?? throw new ArgumentNullException(nameof(applicationState));
 
         ToggleNavigationCommand = toggleNavigationCommand ?? throw new ArgumentNullException(nameof(toggleNavigationCommand));
-
+        
         navigation.IsNavigationVisibleChanged += HandleIsNavigationVisibleChanged;
         settings.KeepOnTopChanged += HandleKeepOnTopChanged;
         settings.RefreshRateChanged += HandleRefreshRateChanged;
@@ -107,8 +112,7 @@ public partial class MainViewModel : ViewModelBase
 
             IsNavigationVisible = navigation.IsNavigationVisible;
 
-            Type templateType = Type.GetType(settings.ClockTemplateType) ?? typeof(DefaultTemplate);
-            ClockTemplate = Activator.CreateInstance(templateType) as ClockTemplate;
+            ClockTemplate = applicationState.ClockTemplate;
 
             LocalTimeMovement clockMovement = new()
             {

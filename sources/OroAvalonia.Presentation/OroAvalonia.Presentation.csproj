@@ -30,8 +30,4 @@
 		<ProjectReference Include="..\OroAvalonia.Presentation.CustomControls\OroAvalonia.Presentation.CustomControls.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Views\" />
-	</ItemGroup>
-
 </Project>

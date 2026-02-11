@@ -1,6 +1,7 @@
-﻿using System;
+﻿using System.Reflection;
 using Avalonia;
 using CommunityToolkit.Mvvm.DependencyInjection;
+using DustInTheWind.ClockAvalonia.Templates;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DustInTheWind.OroAvalonia;
@@ -13,9 +14,11 @@ internal sealed class Program
     [STAThread]
     public static void Main(string[] args)
     {
-        IServiceProvider serviceProvider = ConfigureServices();
-
         BuildAvaloniaApp()
+            .AfterSetup(builder =>
+            {
+                IServiceProvider serviceProvider = ConfigureServices();
+            })
             .StartWithClassicDesktopLifetime(args);
     }
 
@@ -24,7 +27,7 @@ internal sealed class Program
         ServiceCollection serviceCollection = new();
         Setup.ConfigureServices(serviceCollection);
         ServiceProvider serviceProvider = serviceCollection.BuildServiceProvider();
-        
+
         Ioc.Default.ConfigureServices(serviceProvider);
 
         return serviceProvider;
