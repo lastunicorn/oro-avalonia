@@ -27,6 +27,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\OroAvalonia.Infrastructure.Jobs\OroAvalonia.Infrastructure.Jobs.csproj" />
 		<ProjectReference Include="..\OroAvalonia.Ports.SettingsAccess\OroAvalonia.Ports.SettingsAccess.csproj" />
 		<ProjectReference Include="..\OroAvalonia.Presentation.CustomControls\OroAvalonia.Presentation.CustomControls.csproj" />
 		<ProjectReference Include="..\OroAvalonia.Presentation\OroAvalonia.Presentation.csproj" />

@@ -65,13 +65,15 @@
                                         Text="{TemplateBinding Title}"
                                         FontSize="22"
                                         VerticalAlignment="Center"
-                                        HorizontalAlignment="Center"/>
+                                        HorizontalAlignment="Center"
+                                        Foreground="Black"/>
 
                                     <TextBlock
                                         Text="{TemplateBinding Subtitle}"
                                         FontSize="14"
                                         VerticalAlignment="Center"
-                                        HorizontalAlignment="Center"/>
+                                        HorizontalAlignment="Center"
+                                        Foreground="Black"/>
 
                                 </StackPanel>
 
@@ -97,7 +99,8 @@
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"
                                 HorizontalContentAlignment="Center"
-                                VerticalContentAlignment="Center"/>
+                                VerticalContentAlignment="Center"
+                                Foreground="Black"/>
 
                         </Grid>
 

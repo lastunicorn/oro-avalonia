@@ -22,7 +22,8 @@
         <ListBox
             Grid.Column="0"
             ItemsSource="{Binding TemplateTypes}"
-            SelectedItem="{Binding SelectedTemplateType}">
+            SelectedItem="{Binding SelectedTemplateType}"
+            Background="#808080">
         
             <ListBox.ItemTemplate>
                 <DataTemplate x:DataType="settingsArea:TemplateItemModel">

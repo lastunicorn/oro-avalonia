@@ -1,10 +1,11 @@
-using System.Linq;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using CommunityToolkit.Mvvm.DependencyInjection;
+using DustInTheWind.OroAvalonia.Infrastructure.Jobs;
 using DustInTheWind.OroAvalonia.Presentation.MainArea;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DustInTheWind.OroAvalonia;
 
@@ -24,6 +25,8 @@ public partial class App : Application
             DisableAvaloniaDataAnnotationValidation();
 
             desktop.MainWindow = CreateMainWindow();
+            
+            CreateAndStartJobs();
         }
 
         base.OnFrameworkInitializationCompleted();
@@ -47,5 +50,15 @@ public partial class App : Application
         // remove each entry found
         foreach (DataAnnotationsValidationPlugin plugin in dataValidationPluginsToRemove)
             BindingPlugins.DataValidators.Remove(plugin);
+    }
+
+    private void CreateAndStartJobs()
+    {
+        JobEngine jobEngine = Ioc.Default.GetService<JobEngine>();
+
+        IEnumerable<IJob> jobs = Ioc.Default.GetServices<IJob>();
+        jobEngine.AddRange(jobs);
+
+        jobEngine.Start();
     }
 }

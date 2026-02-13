@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using DustInTheWind.ClockAvalonia.Templates;
+using DustInTheWind.OroAvalonia.Infrastructure.Jobs;
 using DustInTheWind.OroAvalonia.Infrastructure.PageModel;
+using DustInTheWind.OroAvalonia.Jobs;
 using DustInTheWind.OroAvalonia.Ports.SettingsAccess;
 using DustInTheWind.OroAvalonia.Presentation;
 using DustInTheWind.OroAvalonia.Presentation.ClockArea;
@@ -24,6 +26,8 @@ internal static class Setup
 
         ApplicationState applicationState = CreateApplicationState(settings);
         serviceCollection.AddSingleton(applicationState);
+
+        serviceCollection.AddJobsFromAssemblyContaining<ClockTemplateChangedJob>();
 
         serviceCollection.AddTransient<MainWindow>();
         serviceCollection.AddTransient<MainViewModel>();

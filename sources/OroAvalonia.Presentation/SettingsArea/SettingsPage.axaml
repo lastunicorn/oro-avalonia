@@ -21,35 +21,40 @@
         <settingsArea:SettingsViewModel/>
     </Design.DataContext>
         
-    <TabControl
-        BorderThickness="0"
-        BorderBrush="LightGray"
-        Background="Transparent"
-        Padding="0 10 0 0">
+    <Border
+        Padding="0 8 0 14">
 
-        <TabItem
-            Header="Templates">
+        <TabControl
+            BorderThickness="0"
+            BorderBrush="LightGray"
+            Background="Transparent"
+            Padding="0 10 0 0">
 
-            <settingsArea:TemplatesControl
-                DataContext="{Binding TemplatesViewModel, Mode=OneWay}"/>
+            <TabItem
+                Header="Templates">
 
-        </TabItem>
+                <settingsArea:TemplatesControl
+                    DataContext="{Binding TemplatesViewModel, Mode=OneWay}"/>
 
-        <TabItem
-            Header="Settings">
+            </TabItem>
 
-            <settingsArea:SettingsControl
-                DataContext="{Binding SettingsViewModel, Mode=OneWay}"/>
+            <TabItem
+                Header="Settings">
 
-        </TabItem>
+                <settingsArea:SettingsControl
+                    DataContext="{Binding SettingsViewModel, Mode=OneWay}"/>
 
-        <TabItem
-            Header="About">
+            </TabItem>
 
-            <settingsArea:AboutControl />
+            <TabItem
+                Header="About">
 
-        </TabItem>
+                <settingsArea:AboutControl />
 
-    </TabControl>
+            </TabItem>
+
+        </TabControl>
+
+    </Border>
 
 </pageModel:RoundPage>

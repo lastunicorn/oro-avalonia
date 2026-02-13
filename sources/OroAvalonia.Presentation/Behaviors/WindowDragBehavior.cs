@@ -6,7 +6,8 @@ using Avalonia.VisualTree;
 namespace DustInTheWind.OroAvalonia.Presentation.Behaviors;
 
 /// <summary>
-/// This behavior adds a drag-and-drop functionality on a <see cref="Window"/>.
+/// Adds a drag behavior to a <see cref="Window"/> that allows the user to move the 
+/// window on the screen.
 /// </summary>
 public static class WindowDragBehavior
 {
