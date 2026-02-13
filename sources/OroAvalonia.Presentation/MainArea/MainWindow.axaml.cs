@@ -1,7 +1,5 @@
 using Avalonia.Controls;
 using Avalonia.Input;
-using Avalonia.Interactivity;
-using DustInTheWind.ClockAvalonia;
 
 namespace DustInTheWind.OroAvalonia.Presentation.MainArea;
 
@@ -10,29 +8,6 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        InitializeClock();
-    }
-
-    private void InitializeClock()
-    {
-        AnalogClock clock = this.FindControl<AnalogClock>("AnalogClock");
-
-        if (clock != null)
-            clock.PointerPressed += HandleClockPointerPressed;
-    }
-
-    private void HandleClockPointerPressed(object sender, PointerPressedEventArgs e)
-    {
-        PointerPointProperties properties = e.GetCurrentPoint(this).Properties;
-
-        if (properties.IsRightButtonPressed)
-            ToggleNavigation();
-    }
-
-    private void ToggleNavigation()
-    {
-        if (DataContext is MainViewModel viewModel)
-            viewModel.ToggleNavigationCommand.Execute(null);
     }
 
     private void ResizeGrip_DragDelta(object sender, VectorEventArgs e)
