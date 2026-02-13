@@ -38,6 +38,7 @@ internal static class Setup
         serviceCollection.AddTransient<ToggleNavigationCommand>();
         serviceCollection.AddTransient<SettingsCommand>();
         serviceCollection.AddTransient<SettingsCloseCommand>();
+        serviceCollection.AddTransient<AppCloseCommand>();
     }
 
     private static ApplicationState CreateApplicationState(ISettings settings)

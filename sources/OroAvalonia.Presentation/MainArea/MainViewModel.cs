@@ -120,11 +120,14 @@ public partial class MainViewModel : ViewModelBase
 
     public SettingsCommand SettingsCommand { get; }
 
+    public AppCloseCommand AppCloseCommand { get; }
+
     public MainViewModel(ISettings settings, PageEngine pageEngine,
         ApplicationState applicationState,
         IPageFactory pageFactory,
         ToggleNavigationCommand toggleNavigationCommand,
-        SettingsCommand settingsCommand)
+        SettingsCommand settingsCommand,
+        AppCloseCommand appCloseCommand)
     {
         this.settings = settings ?? throw new System.ArgumentNullException(nameof(settings));
         this.pageEngine = pageEngine ?? throw new ArgumentNullException(nameof(pageEngine));
@@ -133,6 +136,7 @@ public partial class MainViewModel : ViewModelBase
         
         ToggleNavigationCommand = toggleNavigationCommand ?? throw new ArgumentNullException(nameof(toggleNavigationCommand));
         SettingsCommand = settingsCommand ?? throw new ArgumentNullException(nameof(settingsCommand));
+        AppCloseCommand = appCloseCommand ?? throw new ArgumentNullException(nameof(appCloseCommand));
 
         pageEngine.CurrentPageChanged += HandlePageChanged;
         pageEngine.IsNavigationVisibleChanged += HandleIsNavigationVisibleChanged;

@@ -74,7 +74,7 @@
 				HorizontalAlignment="Right"
 				VerticalAlignment="Top"
 				Cursor="Hand"
-				Click="CloseButton_Click"
+				Command="{Binding AppCloseCommand}"
 				Corner="TopRight"
 				CornerRadius="5"
 				HoverBackground="Red"

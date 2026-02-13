@@ -35,11 +35,6 @@ public partial class MainWindow : Window
             viewModel.ToggleNavigationCommand.Execute(null);
     }
 
-    private void CloseButton_Click(object sender, RoutedEventArgs e)
-    {
-        Close();
-    }
-
     private void ResizeGrip_DragDelta(object sender, VectorEventArgs e)
     {
         double minSize = 100;
