@@ -13,12 +13,16 @@ public class SettingsPageModel : PageViewModel
 
     public SettingsCloseCommand SettingsCloseCommand { get; }
 
+    public TemplatesViewModel TemplatesViewModel { get; }
+
     public SettingsPageModel(
         SettingsViewModel settingsViewModel,
-        SettingsCloseCommand settingsCloseCommand)
+        SettingsCloseCommand settingsCloseCommand,
+        TemplatesViewModel templatesViewModel)
     {
-        SettingsViewModel = settingsViewModel;
-        SettingsCloseCommand = settingsCloseCommand;
+        SettingsViewModel = settingsViewModel ?? throw new ArgumentNullException(nameof(settingsViewModel));
+        SettingsCloseCommand = settingsCloseCommand ?? throw new ArgumentNullException(nameof(settingsCloseCommand));
+        TemplatesViewModel = templatesViewModel ?? throw new ArgumentNullException(nameof(templatesViewModel));
 
         Assembly assembly = Assembly.GetEntryAssembly();
         Title = assembly.GetCustomAttribute<AssemblyProductAttribute>().Product;

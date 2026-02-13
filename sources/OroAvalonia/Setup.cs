@@ -34,6 +34,7 @@ internal static class Setup
         serviceCollection.AddTransient<SettingsPage>();
         serviceCollection.AddTransient<SettingsPageModel>();
         serviceCollection.AddTransient<SettingsViewModel>();
+        serviceCollection.AddTransient<TemplatesViewModel>();
 
         serviceCollection.AddTransient<ToggleNavigationCommand>();
         serviceCollection.AddTransient<SettingsCommand>();

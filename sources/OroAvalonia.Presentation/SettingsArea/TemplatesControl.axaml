@@ -1,0 +1,51 @@
+<UserControl
+	x:Class="DustInTheWind.OroAvalonia.Presentation.SettingsArea.TemplatesControl"
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:settingsArea="using:DustInTheWind.OroAvalonia.Presentation.SettingsArea"
+    xmlns:clockwpf="using:DustInTheWind.ClockAvalonia"
+
+	mc:Ignorable="d"
+	d:DesignWidth="800"
+	d:DesignHeight="450">
+	
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" MinWidth="50" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="*" MinWidth="50" />
+        </Grid.ColumnDefinitions>
+
+        <ListBox
+            Grid.Column="0"
+            ItemsSource="{Binding TemplateTypes}"
+            SelectedItem="{Binding SelectedTemplateType}">
+        
+            <ListBox.ItemTemplate>
+                <DataTemplate x:DataType="settingsArea:TemplateItemModel">
+					<TextBlock
+                        Text="{Binding Name}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        
+        </ListBox>
+
+        <GridSplitter
+            Grid.Column="1"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch" />
+
+        <clockwpf:AnalogClock
+            Grid.Column="2"
+            x:Name="analogClock1"
+            ClockTemplate="{Binding SelectedTemplate}"
+            Movement="{Binding ClockMovement}"
+            Margin="8 0 0 0"
+            RotationDirection="{Binding ClockDirection}"/>
+
+    </Grid>
+
+</UserControl>
