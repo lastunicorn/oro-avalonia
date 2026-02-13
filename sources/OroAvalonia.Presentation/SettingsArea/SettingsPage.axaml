@@ -52,15 +52,7 @@
         <TabItem
             Header="About">
 
-            <!--<about:AboutControl
-                DataContext="{Binding AboutViewModel, Mode=OneWay}"/>-->
-
-            <TextBlock
-                Text="About"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                FontSize="16"
-                FontWeight="DemiBold"/>
+            <settingsArea:AboutControl />
 
         </TabItem>
 

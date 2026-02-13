@@ -1,0 +1,63 @@
+<UserControl
+	x:Class="DustInTheWind.OroAvalonia.Presentation.SettingsArea.AboutControl"
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	
+    mc:Ignorable="d"
+    d:DesignWidth="800"
+    d:DesignHeight="450">
+	
+    <DockPanel>
+
+        <ScrollViewer
+            VerticalScrollBarVisibility="Auto">
+
+            <StackPanel>
+
+                <TextBlock
+                    Text="Author"
+                    FontSize="12"
+                    FontWeight="Bold"
+                    Margin="0 10 0 0"
+                    HorizontalAlignment="Center"/>
+
+                <TextBlock
+                    Text="Dust in the Wind"
+                    FontSize="12"
+                    Margin="0 0 0 10"
+                    HorizontalAlignment="Center"/>
+
+                <TextBlock
+                    Text="Copyright"
+                    FontSize="12"
+                    FontWeight="Bold"
+                    Margin="0 10 0 0"
+                    HorizontalAlignment="Center"/>
+
+                <TextBlock
+                    Text="Copyright (c) Dust in the Wind 2010-2025"
+                    FontSize="12"
+                    Margin="0 0 0 10"
+                    HorizontalAlignment="Center"/>
+
+                <TextBlock
+                    Text="License"
+                    FontSize="12"
+                    FontWeight="Bold"
+                    Margin="0 10 0 0"
+                    HorizontalAlignment="Center"/>
+
+                <TextBlock
+                    Text="GNU General Public License v3.0"
+                    FontSize="12"
+                    Margin="0 0 0 10"
+                    HorizontalAlignment="Center"/>
+
+            </StackPanel>
+        </ScrollViewer>
+
+    </DockPanel>
+
+</UserControl>

@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using System.Text.Json.Nodes;
 using DustInTheWind.OroAvalonia.Ports.SettingsAccess.Models;
 
 namespace DustInTheWind.OroAvalonia.Ports.SettingsAccess;
@@ -45,8 +46,25 @@ internal class SettingsStorage
         {
             string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.json");
 
-            string outputJson = JsonSerializer.Serialize(appSettings, serializerOptions.Value);
+            JsonObject jsonObject = OpenAppSettingsFile(filePath);
+            JsonObject newSettingsJson = JsonSerializer.SerializeToNode(appSettings, serializerOptions.Value)?.AsObject()
+                ?? new JsonObject();
+
+            foreach (KeyValuePair<string, JsonNode> property in newSettingsJson)
+                jsonObject[property.Key] = property.Value?.DeepClone();
+
+            string outputJson = JsonSerializer.Serialize(jsonObject, serializerOptions.Value);
             File.WriteAllText(filePath, outputJson);
         }
+    }
+
+    private JsonObject OpenAppSettingsFile(string filePath)
+    {
+        if (!File.Exists(filePath))
+            return new JsonObject();
+
+        string existingJson = File.ReadAllText(filePath);
+        return JsonSerializer.Deserialize<JsonObject>(existingJson, serializerOptions.Value)
+            ?? new JsonObject();
     }
 }

@@ -1,8 +1,6 @@
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
-using Avalonia.LogicalTree;
-using Avalonia.VisualTree;
 using DustInTheWind.ClockAvalonia;
 
 namespace DustInTheWind.OroAvalonia.Presentation.MainArea;
@@ -20,19 +18,25 @@ public partial class MainWindow : Window
         AnalogClock clock = this.FindControl<AnalogClock>("AnalogClock");
 
         if (clock != null)
-        {
             clock.PointerPressed += HandleClockPointerPressed;
-        }
     }
 
     private void HandleClockPointerPressed(object sender, PointerPressedEventArgs e)
     {
         PointerPointProperties properties = e.GetCurrentPoint(this).Properties;
 
+        if (properties.IsRightButtonPressed)
+            ToggleNavigation();
+    }
+
+    protected override void OnPointerPressed(PointerPressedEventArgs e)
+    {
+        base.OnPointerPressed(e);
+
+        PointerPointProperties properties = e.GetCurrentPoint(this).Properties;
+
         if (properties.IsLeftButtonPressed)
             BeginMoveDrag(e);
-        else if (properties.IsRightButtonPressed)
-            ToggleNavigation();
     }
 
     private void ToggleNavigation()
