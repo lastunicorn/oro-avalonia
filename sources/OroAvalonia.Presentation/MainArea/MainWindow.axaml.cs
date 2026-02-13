@@ -29,16 +29,6 @@ public partial class MainWindow : Window
             ToggleNavigation();
     }
 
-    protected override void OnPointerPressed(PointerPressedEventArgs e)
-    {
-        base.OnPointerPressed(e);
-
-        PointerPointProperties properties = e.GetCurrentPoint(this).Properties;
-
-        if (properties.IsLeftButtonPressed)
-            BeginMoveDrag(e);
-    }
-
     private void ToggleNavigation()
     {
         if (DataContext is MainViewModel viewModel)

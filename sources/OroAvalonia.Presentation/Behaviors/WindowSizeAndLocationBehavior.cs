@@ -6,13 +6,23 @@ using DustInTheWind.OroAvalonia.Ports.SettingsAccess;
 
 namespace DustInTheWind.OroAvalonia.Presentation.Behaviors;
 
-public static class WindowLocationBehavior
+/// <summary>
+/// Provides attached properties and behaviors for persisting and restoring the size and position of a window using
+/// application-defined settings.
+/// </summary>
+/// <remarks>
+/// The WindowLocationBehavior class enables automatic saving and loading of window location and size by
+/// associating an ISettings implementation with a Window. This is useful for applications that want to remember window
+/// placement between sessions. To use, attach the Settings property to a Window and provide an ISettings instance that
+/// handles storage and retrieval of window state.
+/// </remarks>
+public static class WindowSizeAndLocationBehavior
 {
     #region Settings Attached Property
 
     public static readonly AttachedProperty<ISettings> SettingsProperty = AvaloniaProperty.RegisterAttached<Window, ISettings>(
         "Settings",
-        typeof(WindowLocationBehavior));
+        typeof(WindowSizeAndLocationBehavior));
 
     public static ISettings GetSettings(AvaloniaObject obj)
     {
@@ -26,7 +36,7 @@ public static class WindowLocationBehavior
 
     #endregion
 
-    static WindowLocationBehavior()
+    static WindowSizeAndLocationBehavior()
     {
         SettingsProperty.Changed.AddClassHandler<Window>(OnSettingsChanged);
     }
@@ -40,28 +50,26 @@ public static class WindowLocationBehavior
         }
 
         if (e.NewValue != null)
-        {
             window.Opened += Window_Opened;
-        }
     }
 
     private static void Window_Opened(object sender, EventArgs e)
     {
-        if (sender is Window window)
+        if (sender is not Window window)
+            return;
+
+        ISettings settings = GetSettings(window);
+        if (settings != null)
         {
-            ISettings settings = GetSettings(window);
-            if (settings != null)
-            {
-                LoadWindowLocation(window, settings);
-                LoadWindowSize(window, settings);
+            LoadWindowLocation(window, settings);
+            LoadWindowSize(window, settings);
 
-                window.Opened -= Window_Opened;
+            window.Opened -= Window_Opened;
 
-                EnsureWindowIsOnScreen(window);
+            EnsureWindowIsOnScreen(window);
 
-                window.PositionChanged += Window_PositionChanged;
-                window.SizeChanged += Window_SizeChanged;
-            }
+            window.PositionChanged += Window_PositionChanged;
+            window.SizeChanged += Window_SizeChanged;
         }
     }
 
@@ -112,9 +120,7 @@ public static class WindowLocationBehavior
         double top = settings.WindowTop;
 
         if (!double.IsNaN(left) && !double.IsNaN(top))
-        {
             window.Position = new PixelPoint((int)left, (int)top);
-        }
     }
 
     private static void LoadWindowSize(Window window, ISettings settings)

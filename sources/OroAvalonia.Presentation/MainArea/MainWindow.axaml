@@ -28,7 +28,8 @@
 	Topmost="{Binding KeepOnTop}"
 	Width="400"
 	Height="400"
-    behaviors:WindowLocationBehavior.Settings="{Binding Settings}">
+    behaviors:WindowSizeAndLocationBehavior.Settings="{Binding Settings}"
+    behaviors:WindowDragBehavior.EnableDrag="True">
 
 	<Design.DataContext>
 		<!-- This only sets the DataContext for the previewer in an IDE,
@@ -108,17 +109,6 @@
 
 			</ContentControl>
 
-			<!--<Viewbox
-				HorizontalAlignment="Stretch"
-				VerticalAlignment="Stretch">
-
-				<controls:AnalogClock
-					x:Name="AnalogClock"
-					ClockTemplate="{Binding ClockTemplate}"
-					Movement="{Binding ClockMovement}"
-					RotationDirection="{Binding ClockDirection}"/>
-
-			</Viewbox>-->
 		</Panel>
 
 	</local:SquareDecorator>
