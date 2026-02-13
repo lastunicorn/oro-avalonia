@@ -14,7 +14,7 @@
 	d:DesignHeight="450"
 
     Title="{Binding Title}"
-    Subtitle="{Binding Subititle}"
+    Subtitle="{Binding Subtitle}"
     CloseCommand="{Binding SettingsCloseCommand}">
 
     <Design.DataContext>
