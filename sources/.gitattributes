@@ -1,0 +1,32 @@
+* text=auto
+
+# Shell scripts should always use LF
+*.sh text eol=lf
+
+# Debian control files should use LF
+debian/control text eol=lf
+debian/postinst text eol=lf
+debian/prerm text eol=lf
+debian/postrm text eol=lf
+debian/preinst text eol=lf
+
+# Windows scripts use CRLF
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Source code uses CRLF
+*.cs text eol=crlf
+*.csproj text eol=crlf
+*.sln text eol=crlf
+*.json text eol=crlf
+*.xml text eol=crlf
+*.axaml text eol=crlf
+
+# Binary files
+*.dll binary
+*.exe binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary

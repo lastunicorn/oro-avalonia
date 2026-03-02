@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Oro Avalonia
+Comment=Clock Application
+Exec=/opt/oro-avalonia/Oro
+Icon=/opt/oro-avalonia/oro-avalonia
+Terminal=false
+Categories=Utility;

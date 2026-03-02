@@ -1,0 +1,9 @@
+Package: oro-avalonia
+Version: 1.0.0
+Section: utils
+Priority: optional
+Architecture: amd64
+Maintainer: Your Name <your.email@example.com>
+Description: Oro Avalonia Clock Application
+ A clock application built with Avalonia UI framework.
+ This application provides clock functionality on Linux desktop.
